@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import BoardGame from "./components/boardgame";
+import ControlPanel from "./components/controlpanel";
+import "./App.sass";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      boardShape: { x: 6, y: 4 },
+      cards: [
+        "cat",
+        "banana",
+        "cat",
+        "banana",
+        "cat",
+        "banana",
+        "cat",
+        "banana",
+        "cat",
+        "banana",
+        "cat",
+        "banana",
+        "cat",
+        "banana",
+        "cat",
+        "banana",
+        "cat",
+        "banana",
+        "cat",
+        "banana",
+        "cat",
+        "banana",
+        "cat",
+        "banana"
+      ]
+    };
+  }
+  render() {
+    return (
+      <div className="main">
+        <BoardGame {...this.state} />
+        <ControlPanel />
+      </div>
+    );
+  }
 }
 
 export default App;
