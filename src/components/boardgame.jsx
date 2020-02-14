@@ -1,13 +1,20 @@
 import React from "react";
 
 const Card = props => {
-  console.log("CardID: ", props.cardID);
-  return <div className="card">card</div>;
+  //   console.log("CardID: ", props.cardID);
+  // console.log("Card props: ", props);
+  const { cards, cardID, handleClick } = props;
+  const value = cards[cardID];
+  return (
+    <div className="card" onClick={() => handleClick(value)}>
+      {value}
+    </div>
+  );
 };
 
 const Row = props => {
   const { boardShape, cards, rowID } = props;
-  console.log(rowID);
+  //   console.log(rowID);
   let rowCards = [];
   for (let i = 0; i < cards.length / boardShape.y; i++) {
     rowCards.push(
