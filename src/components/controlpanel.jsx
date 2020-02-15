@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const ChangeScore = props => {
   const { handleClick, team } = props;
@@ -48,7 +49,7 @@ const Teams = props => {
 };
 
 const TeamIncDec = props => {
-//   console.log("TeamIncDec, props: ", props);
+  //   console.log("TeamIncDec, props: ", props);
   return (
     <div className="teamsbtn">
       <div>Teams</div>
@@ -58,21 +59,50 @@ const TeamIncDec = props => {
 };
 
 const Themes = props => {
-  const { changeTheme } = props;
-  return (
-    <Button onClick={() => changeTheme("themes")} variant="primary" block>
-      Themes
-    </Button>
-  );
+  const { changeScreen, currentScreen } = props;
+  console.log("Themes, props: ", props);
+  if (currentScreen === "themes") {
+    return (
+      <Link to="/game">
+        <Button onClick={() => changeScreen("game")} variant="primary" block>
+          Game
+        </Button>
+      </Link>
+    );
+  } else {
+    return (
+      <Link to="/themes">
+        <Button onClick={() => changeScreen("themes")} variant="primary" block>
+          Themes
+        </Button>
+      </Link>
+    );
+  }
 };
 
 const Settings = props => {
-  const { changeSettings } = props;
-  return (
-    <Button onClick={() => changeSettings("settings")} variant="primary" block>
-      Settings
-    </Button>
-  );
+  const { changeScreen, currentScreen } = props;
+  if (currentScreen === "settings") {
+    return (
+      <Link to="game">
+        <Button onClick={() => changeScreen("game")} variant="primary" block>
+          Game
+        </Button>
+      </Link>
+    );
+  } else {
+    return (
+      <Link to="settings">
+        <Button
+          onClick={() => changeScreen("settings")}
+          variant="primary"
+          block
+        >
+          Settings
+        </Button>
+      </Link>
+    );
+  }
 };
 
 const ControlPanel = props => {

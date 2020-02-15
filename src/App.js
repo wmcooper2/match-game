@@ -1,7 +1,9 @@
 import React from "react";
 import BoardGame from "./components/boardgame";
 import ControlPanel from "./components/controlpanel";
+import { SettingsScreen, ThemesScreen } from "./components/screens";
 import { defaultCards } from "./components/themes";
+import { HashRouter, Route } from "react-router-dom";
 import "./App.sass";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -11,6 +13,7 @@ class App extends React.Component {
     this.state = {
       boardShape: { x: 6, y: 4 },
       cards: defaultCards,
+      currentScreen: "game",
       teamCount: 4,
       teams: [
         { name: "Team A", score: 0 },
@@ -27,6 +30,7 @@ class App extends React.Component {
     this.changeScore = this.changeScore.bind(this);
     this.changeSettings = this.changeSettings.bind(this);
     this.changeTeams = this.changeTeams.bind(this);
+    this.changeScreen = this.changeScreen.bind(this);
   }
 
   cardClick = props => {
@@ -48,6 +52,13 @@ class App extends React.Component {
 
   changeShape = props => {
     console.log("changeShape, props: ", props);
+  };
+
+  changeScreen = props => {
+    console.log("changeScreen, props: ", props);
+    this.setState({
+      currentScreen: props
+    });
   };
 
   changeTheme = props => {
@@ -99,17 +110,34 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="main">
-        <BoardGame {...this.state} handleClick={this.cardClick} />
-        <ControlPanel
-          changeShape={this.changeShape}
-          changeScore={this.changeScore}
-          changeSettings={this.changeSettings}
-          changeTheme={this.changeTheme}
-          changeTeams={this.changeTeams}
-          {...this.state}
-        />
-      </div>
+      <HashRouter>
+        <div className="main">
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <BoardGame {...this.state} handleClick={this.cardClick} />
+            )}
+          />
+          <Route path="/settings" component={SettingsScreen} />
+          <Route
+            path="/game"
+            render={props => (
+              <BoardGame {...this.state} handleClick={this.cardClick} />
+            )}
+          />
+          <Route path="/themes" component={ThemesScreen} />
+          <ControlPanel
+            changeShape={this.changeShape}
+            changeScore={this.changeScore}
+            changeSettings={this.changeSettings}
+            changeScreen={this.changeScreen}
+            changeTheme={this.changeTheme}
+            changeTeams={this.changeTeams}
+            {...this.state}
+          />
+        </div>
+      </HashRouter>
     );
   }
 }
