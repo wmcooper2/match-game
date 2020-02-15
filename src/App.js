@@ -21,14 +21,15 @@ class App extends React.Component {
         { name: "Team F", score: 0 }
       ]
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.cardClick = this.cardClick.bind(this);
     this.changeShape = this.changeShape.bind(this);
     this.changeTheme = this.changeTheme.bind(this);
     this.changeScore = this.changeScore.bind(this);
+    this.changeSettings = this.changeSettings.bind(this);
     this.changeTeams = this.changeTeams.bind(this);
   }
 
-  handleClick = props => {
+  cardClick = props => {
     console.log(props);
   };
 
@@ -51,7 +52,7 @@ class App extends React.Component {
 
   changeTheme = props => {
     console.log("changeTheme, props: ", props);
-    this.selectCards();
+    // this.selectCards();
   };
 
   changeScore = (props, team) => {
@@ -62,15 +63,18 @@ class App extends React.Component {
         props === "plus" ? item.score++ : item.score--;
       }
     });
-    console.log("teamsCopy: ", teamsCopy);
+    // console.log("teamsCopy: ", teamsCopy);
     this.setState({
       teams: teamsCopy
     });
   };
 
-  changeTeams = props => {
-    console.log("changeTeams, props: ", props);
+  changeSettings = props => {
+    console.log("changeSettings, props: ", props);
+  };
 
+  changeTeams = props => {
+    // console.log("changeTeams, props: ", props);
     let newCount;
     if (props === "plus") {
       if (this.state.teamCount >= 6) {
@@ -90,16 +94,17 @@ class App extends React.Component {
     this.setState(state => {
       return { teamCount: newCount };
     });
-    console.log(this.state);
+    // console.log(this.state);
   };
 
   render() {
     return (
       <div className="main">
-        <BoardGame {...this.state} handleClick={this.handleClick} />
+        <BoardGame {...this.state} handleClick={this.cardClick} />
         <ControlPanel
           changeShape={this.changeShape}
           changeScore={this.changeScore}
+          changeSettings={this.changeSettings}
           changeTheme={this.changeTheme}
           changeTeams={this.changeTeams}
           {...this.state}

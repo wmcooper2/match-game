@@ -48,7 +48,7 @@ const Teams = props => {
 };
 
 const TeamIncDec = props => {
-  //   console.log("TeamIncDec, props: ", props);
+//   console.log("TeamIncDec, props: ", props);
   return (
     <div className="teamsbtn">
       <div>Teams</div>
@@ -60,16 +60,16 @@ const TeamIncDec = props => {
 const Themes = props => {
   const { changeTheme } = props;
   return (
-    <Button onClick={() => changeTheme("theme")} variant="primary" block>
+    <Button onClick={() => changeTheme("themes")} variant="primary" block>
       Themes
     </Button>
   );
 };
 
 const Settings = props => {
-  const { changeShape } = props;
+  const { changeSettings } = props;
   return (
-    <Button onClick={() => changeShape("shape")} variant="primary" block>
+    <Button onClick={() => changeSettings("settings")} variant="primary" block>
       Settings
     </Button>
   );
