@@ -2,15 +2,15 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 
 const SettingsScreen = props => {
-  console.log("SettingsScreen, props: ", props);
-  const { changeShape, choices } = props;
+  // console.log("SettingsScreen, props: ", props);
+  const { updateBoard, choices } = props;
   let shapes = [];
   choices.forEach(choice => {
     shapes.push(
       <Button
         key={choice.size}
         className="deck"
-        onClick={() => changeShape(choice.size)}
+        onClick={() => updateBoard(choice.size)}
       >
         {choice.size}
       </Button>
@@ -25,16 +25,16 @@ const SettingsScreen = props => {
   );
 };
 
-const ThemesScreen = props => {
-  // console.log("ThemesScreen, props: ", props);
-  const { changeDeck, choices } = props;
+const DeckScreen = props => {
+  // console.log("DeckScreen, props: ", props);
+  const { updateBoard, choices } = props;
   let decks = [];
   choices.forEach(choice =>
     decks.push(
       <Button
         key={choice.name}
         className="deck"
-        onClick={() => changeDeck(choice.name)}
+        onClick={() => updateBoard(choice.name)}
       >
         {choice.name}
       </Button>
@@ -44,4 +44,4 @@ const ThemesScreen = props => {
   return <div className="screen">{decks}</div>;
 };
 
-export { SettingsScreen, ThemesScreen };
+export { SettingsScreen, DeckScreen };

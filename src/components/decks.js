@@ -1,4 +1,4 @@
-const defaultCards = [
+const defaultDeck = [
   "cat",
   "banana",
   "dog",
@@ -52,4 +52,4 @@ const fruits = [
   "yuzu"
 ];
 
-export { defaultCards, fruits };
+export { defaultDeck, fruits };

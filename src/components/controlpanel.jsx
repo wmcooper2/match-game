@@ -44,7 +44,6 @@ const TeamsList = props => {
       <Team key={i} name={teams[i].name} score={teams[i].score} {...props} />
     );
   }
-  //   console.log("teams: ", teams);
   return <div className="teams">{teamsInPlay}</div>;
 };
 
@@ -58,22 +57,22 @@ const TeamIncDec = props => {
   );
 };
 
-const ThemesBtn = props => {
+const DecksBtn = props => {
   const { changeScreen, currentScreen } = props;
-  //   console.log("Themes, props: ", props);
-  if (currentScreen === "themes") {
+  //   console.log("DecksBtn, props: ", props);
+  if (currentScreen === "decks") {
     return (
-      <Link to="/game">
-        <Button onClick={() => changeScreen("game")} variant="primary" block>
+      <Link to="/">
+        <Button onClick={() => changeScreen("/")} variant="primary" block>
           Game
         </Button>
       </Link>
     );
   } else {
     return (
-      <Link to="/themes">
-        <Button onClick={() => changeScreen("themes")} variant="primary" block>
-          Themes
+      <Link to="/decks">
+        <Button onClick={() => changeScreen("decks")} variant="primary" block>
+          Decks
         </Button>
       </Link>
     );
@@ -81,11 +80,12 @@ const ThemesBtn = props => {
 };
 
 const SettingsBtn = props => {
+  //   console.log("SettingsBtn, props: ", props);
   const { changeScreen, currentScreen } = props;
   if (currentScreen === "settings") {
     return (
-      <Link to="game">
-        <Button onClick={() => changeScreen("game")} variant="primary" block>
+      <Link to="/">
+        <Button onClick={() => changeScreen("/")} variant="primary" block>
           Game
         </Button>
       </Link>
@@ -112,7 +112,7 @@ const ControlPanel = props => {
       <TeamsList {...props} />
       <div className="controls">
         <TeamIncDec {...props} />
-        <ThemesBtn {...props} />
+        <DecksBtn {...props} />
         <SettingsBtn {...props} />
       </div>
     </div>

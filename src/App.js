@@ -2,8 +2,8 @@ import React from "react";
 import BoardGame from "./components/boardgame";
 import ControlPanel from "./components/controlpanel";
 import { boardShapes, defaultShape } from "./boardshapes";
-import { SettingsScreen, ThemesScreen } from "./components/screens";
-import { defaultCards, fruits } from "./components/themes";
+import { SettingsScreen, DeckScreen } from "./components/screens";
+import { defaultDeck, fruits } from "./components/decks";
 import { HashRouter, Route } from "react-router-dom";
 import "./App.sass";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,7 +13,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       boardShape: defaultShape,
-      cards: defaultCards,
+      deck: defaultDeck,
+      deckName: "default",
       currentScreen: "game",
       teamCount: 4,
       teams: [
@@ -26,46 +27,78 @@ class App extends React.Component {
       ]
     };
 
-    this.themeChoices = [
-      { name: "default", cards: defaultCards },
-      { name: "fruits", cards: fruits }
+    this.deckChoices = [
+      { name: "default", deck: defaultDeck },
+      { name: "fruits", deck: fruits }
     ];
 
     this.cardClick = this.cardClick.bind(this);
     this.changeShape = this.changeShape.bind(this);
     this.changeDeck = this.changeDeck.bind(this);
     this.changeScore = this.changeScore.bind(this);
-    this.changeSettings = this.changeSettings.bind(this);
     this.changeTeams = this.changeTeams.bind(this);
     this.changeScreen = this.changeScreen.bind(this);
+    this.updateBoard = this.updateBoard.bind(this);
   }
 
   cardClick = props => {
     console.log(props);
   };
 
-  selectCards = props => {
-    console.log("selectCards, props: ", props);
-    let oldCards = props.slice();
-    let newCards = [];
+  updateBoard = props => {
+    // console.log(typeof props);
+    // console.log("updateBoard, props: ", props);
+    //load a fresh collection of the chosen deck
+    // console.log("current deckName: ", this.state.deckName);
+    // console.log("current deck: ", this.state.deck);
+    // console.log("current boardShape: ", this.state.boardShape);
 
-    //set pair limit
-    const pairLimit = Math.floor(
-      (this.state.boardShape.x * this.state.boardShape.y) / 2
-    );
+    //defaults for this function
+    let deck = this.deckChoices.filter(choice => choice.name === "default");
+    let deckName = this.state.deckName;
+    let shape = this.state.boardShape;
+    console.log("before deckName: ", deckName);
+    console.log("before deck: ", deck[0].deck);
+    console.log("before shape: ", shape);
 
-    //choose (pair limit) random cards
-    for (let i = 0; i < pairLimit; i++) {
-      let choice = Math.floor(Math.random() * oldCards.length);
-      newCards.push(oldCards[choice]);
-      oldCards.splice(choice, 1);
+    //only change the state of the chosen prop
+    if (typeof props === "string") {
+      //change deck
+      deck = this.deckChoices.filter(choice => choice.name === props);
+      deckName = deck[0].name;
+    } else {
+      //change shape
+      shape = boardShapes.filter(item => item.size === props);
+      shape = shape[0];
     }
 
-    //make pairs of the cards
-    newCards = newCards.concat(newCards);
-    // console.log("newCards: ", newCards);
+    //check the state
+    console.log("after deckName: ", deckName);
+    console.log("after deck: ", deck[0].deck);
+    console.log("after shape: ", shape);
 
-    //randomize the final deck of cards
+    //copy so you don't ruin the original
+    let deckCopy = deck[0].deck.slice();
+    console.log("deckCopy: ", deckCopy);
+
+    // set pair limit
+    const pairLimit = (shape.x * shape.y) / 2;
+    console.log("pairLimit: ", pairLimit);
+
+    // choose (pair limit) random deck
+    let newCards = [];
+    for (let i = 0; i < pairLimit; i++) {
+      let choice = Math.floor(Math.random() * deckCopy.length);
+      newCards.push(deckCopy[choice]);
+      deckCopy.splice(choice, 1);
+    }
+    console.log("newCards, before: ", newCards);
+
+    // make pairs of the deck
+    newCards = newCards.concat(newCards);
+    console.log("newCards, after: ", newCards);
+
+    // randomize the final deck of deck
     let randomOrder = [];
     const randomLimit = newCards.length;
     for (let i = 0; i < randomLimit; i++) {
@@ -73,11 +106,16 @@ class App extends React.Component {
       randomOrder.push(newCards[choice]);
       newCards.splice(choice, 1);
     }
-    // console.log("randomOrder: ", randomOrder);
+    console.log("randomOrder: ", randomOrder);
 
-    this.setState(state => {
-      return { cards: randomOrder };
+    this.setState(() => {
+      return {
+        deck: randomOrder,
+        deckName: deckName,
+        shape: shape
+      };
     });
+    //shape in boardscreen not updating
   };
 
   changeShape = props => {
@@ -85,13 +123,10 @@ class App extends React.Component {
     //filter the object that matches the size
     let newShape = boardShapes.filter(item => item.size === props);
 
-    //update the card pairs on the board screen to match the new shape
-    // this.selectCards(this.state.cards);
-
-    //set the state
-    this.setState(state => {
+    this.setState(() => {
       return { boardShape: newShape[0] };
     });
+    this.updateBoard();
   };
 
   changeScreen = props => {
@@ -102,9 +137,12 @@ class App extends React.Component {
   };
 
   changeDeck = props => {
-    // console.log("changeDeck, props: ", props);
-    let newDeck = this.themeChoices.filter(choice => choice.name === props);
-    this.selectCards(newDeck[0].cards);
+    console.log("changeDeck, props: ", props);
+    let newDeck = this.deckChoices.filter(choice => choice.name === props);
+    this.setState(() => {
+      return { deckName: newDeck[0].name };
+    });
+    this.updateBoard();
   };
 
   changeScore = (props, team) => {
@@ -119,10 +157,6 @@ class App extends React.Component {
     this.setState({
       teams: teamsCopy
     });
-  };
-
-  changeSettings = props => {
-    console.log("changeSettings, props: ", props);
   };
 
   changeTeams = props => {
@@ -146,7 +180,6 @@ class App extends React.Component {
     this.setState(state => {
       return { teamCount: newCount };
     });
-    // console.log(this.state);
   };
 
   render() {
@@ -157,40 +190,34 @@ class App extends React.Component {
             exact
             path="/"
             render={props => (
-              <BoardGame {...this.state} handleClick={this.cardClick} />
+              <BoardGame
+                boardShape={this.state.boardShape}
+                handleClick={this.cardClick}
+                deck={this.state.deck}
+              />
             )}
           />
-          {/* <Route path="/settings" component={SettingsScreen} /> */}
           <Route
             path="/settings"
             render={props => (
               <SettingsScreen
                 choices={boardShapes}
-                changeShape={this.changeShape}
+                updateBoard={this.updateBoard}
               />
             )}
           />
           <Route
-            path="/game"
+            path="/decks"
             render={props => (
-              <BoardGame {...this.state} handleClick={this.cardClick} />
-            )}
-          />
-          <Route
-            path="/themes"
-            render={props => (
-              <ThemesScreen
-                changeDeck={this.changeDeck}
-                choices={this.themeChoices}
+              <DeckScreen
+                updateBoard={this.updateBoard}
+                choices={this.deckChoices}
               />
             )}
           />
           <ControlPanel
-            changeShape={this.changeShape}
             changeScore={this.changeScore}
-            changeSettings={this.changeSettings}
             changeScreen={this.changeScreen}
-            changeDeck={this.changeDeck}
             changeTeams={this.changeTeams}
             {...this.state}
           />
