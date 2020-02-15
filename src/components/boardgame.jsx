@@ -2,26 +2,26 @@ import React from "react";
 
 const Card = props => {
   //   console.log("CardID: ", props.cardID);
-  // console.log("Card props: ", props);
-  const { cards, cardID, handleClick } = props;
-  const value = cards[cardID];
+  const { card, handleClick } = props;
   return (
-    <div className="card" onClick={() => handleClick(value)}>
-      {value}
+    <div className="card" onClick={() => handleClick(card)}>
+      {card}
     </div>
   );
 };
 
 const Row = props => {
-  const { boardShape, cards, rowID } = props;
+  console.log("Row, props: ", props);
+  const { boardShape, cards, rowID, handleClick } = props;
   //   console.log(rowID);
   let rowCards = [];
-  for (let i = 0; i < cards.length / boardShape.y; i++) {
+  for (let i = 0; i < boardShape.x; i++) {
     rowCards.push(
       <Card
         key={boardShape.x * rowID + i}
-        {...props}
         cardID={boardShape.x * rowID + i}
+        card={cards[boardShape.x * rowID + i]}
+        handleClick={handleClick}
       />
     );
   }
@@ -29,10 +29,10 @@ const Row = props => {
 };
 
 const BoardGame = props => {
+  console.log("BoardGame, props: ", props);
   const { boardShape } = props;
-  const boardRows = boardShape.y;
   let rows = [];
-  for (let i = 0; i < boardRows; i++) {
+  for (let i = 0; i < boardShape.y; i++) {
     rows.push(<Row key={i} {...props} rowID={i} />);
   }
   return <div className="board">{rows}</div>;

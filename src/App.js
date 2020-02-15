@@ -1,8 +1,9 @@
 import React from "react";
 import BoardGame from "./components/boardgame";
 import ControlPanel from "./components/controlpanel";
+import { boardShapes, defaultShape } from "./boardshapes";
 import { SettingsScreen, ThemesScreen } from "./components/screens";
-import { defaultCards } from "./components/themes";
+import { defaultCards, fruits } from "./components/themes";
 import { HashRouter, Route } from "react-router-dom";
 import "./App.sass";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      boardShape: { x: 6, y: 4 },
+      boardShape: defaultShape,
       cards: defaultCards,
       currentScreen: "game",
       teamCount: 4,
@@ -24,9 +25,15 @@ class App extends React.Component {
         { name: "Team F", score: 0 }
       ]
     };
+
+    this.themeChoices = [
+      { name: "default", cards: defaultCards },
+      { name: "fruits", cards: fruits }
+    ];
+
     this.cardClick = this.cardClick.bind(this);
     this.changeShape = this.changeShape.bind(this);
-    this.changeTheme = this.changeTheme.bind(this);
+    this.changeDeck = this.changeDeck.bind(this);
     this.changeScore = this.changeScore.bind(this);
     this.changeSettings = this.changeSettings.bind(this);
     this.changeTeams = this.changeTeams.bind(this);
@@ -39,31 +46,65 @@ class App extends React.Component {
 
   selectCards = props => {
     console.log("selectCards, props: ", props);
-    let oldCards = this.state.cards;
+    let oldCards = props.slice();
     let newCards = [];
-    for (let i = 0; i < oldCards.length; i++) {
+
+    //set pair limit
+    const pairLimit = Math.floor(
+      (this.state.boardShape.x * this.state.boardShape.y) / 2
+    );
+
+    //choose (pair limit) random cards
+    for (let i = 0; i < pairLimit; i++) {
       let choice = Math.floor(Math.random() * oldCards.length);
-      newCards.push(oldCards.pop(choice));
+      newCards.push(oldCards[choice]);
+      oldCards.splice(choice, 1);
     }
+
+    //make pairs of the cards
+    newCards = newCards.concat(newCards);
+    // console.log("newCards: ", newCards);
+
+    //randomize the final deck of cards
+    let randomOrder = [];
+    const randomLimit = newCards.length;
+    for (let i = 0; i < randomLimit; i++) {
+      let choice = Math.floor(Math.random() * newCards.length);
+      randomOrder.push(newCards[choice]);
+      newCards.splice(choice, 1);
+    }
+    // console.log("randomOrder: ", randomOrder);
+
     this.setState(state => {
-      return { cards: newCards };
+      return { cards: randomOrder };
     });
   };
 
   changeShape = props => {
     console.log("changeShape, props: ", props);
+    //filter the object that matches the size
+    let newShape = boardShapes.filter(item => item.size === props);
+
+    //update the card pairs on the board screen to match the new shape
+    // this.selectCards(this.state.cards);
+
+    //set the state
+    this.setState(state => {
+      return { boardShape: newShape[0] };
+    });
   };
 
   changeScreen = props => {
-    console.log("changeScreen, props: ", props);
+    // console.log("changeScreen, props: ", props);
     this.setState({
       currentScreen: props
     });
   };
 
-  changeTheme = props => {
-    console.log("changeTheme, props: ", props);
-    // this.selectCards();
+  changeDeck = props => {
+    // console.log("changeDeck, props: ", props);
+    let newDeck = this.themeChoices.filter(choice => choice.name === props);
+    this.selectCards(newDeck[0].cards);
   };
 
   changeScore = (props, team) => {
@@ -119,20 +160,37 @@ class App extends React.Component {
               <BoardGame {...this.state} handleClick={this.cardClick} />
             )}
           />
-          <Route path="/settings" component={SettingsScreen} />
+          {/* <Route path="/settings" component={SettingsScreen} /> */}
+          <Route
+            path="/settings"
+            render={props => (
+              <SettingsScreen
+                choices={boardShapes}
+                changeShape={this.changeShape}
+              />
+            )}
+          />
           <Route
             path="/game"
             render={props => (
               <BoardGame {...this.state} handleClick={this.cardClick} />
             )}
           />
-          <Route path="/themes" component={ThemesScreen} />
+          <Route
+            path="/themes"
+            render={props => (
+              <ThemesScreen
+                changeDeck={this.changeDeck}
+                choices={this.themeChoices}
+              />
+            )}
+          />
           <ControlPanel
             changeShape={this.changeShape}
             changeScore={this.changeScore}
             changeSettings={this.changeSettings}
             changeScreen={this.changeScreen}
-            changeTheme={this.changeTheme}
+            changeDeck={this.changeDeck}
             changeTeams={this.changeTeams}
             {...this.state}
           />

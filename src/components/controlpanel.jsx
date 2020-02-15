@@ -34,7 +34,7 @@ const Team = props => {
   );
 };
 
-const Teams = props => {
+const TeamsList = props => {
   //   console.log("Teams props: ", props);
   const { teams } = props;
   const { teamCount } = props;
@@ -58,9 +58,9 @@ const TeamIncDec = props => {
   );
 };
 
-const Themes = props => {
+const ThemesBtn = props => {
   const { changeScreen, currentScreen } = props;
-  console.log("Themes, props: ", props);
+  //   console.log("Themes, props: ", props);
   if (currentScreen === "themes") {
     return (
       <Link to="/game">
@@ -80,7 +80,7 @@ const Themes = props => {
   }
 };
 
-const Settings = props => {
+const SettingsBtn = props => {
   const { changeScreen, currentScreen } = props;
   if (currentScreen === "settings") {
     return (
@@ -109,11 +109,11 @@ const ControlPanel = props => {
   //   console.log("ControlPanel, props: ", props);
   return (
     <div className="controlpanel">
-      <Teams {...props} />
+      <TeamsList {...props} />
       <div className="controls">
         <TeamIncDec {...props} />
-        <Themes {...props} />
-        <Settings {...props} />
+        <ThemesBtn {...props} />
+        <SettingsBtn {...props} />
       </div>
     </div>
   );
