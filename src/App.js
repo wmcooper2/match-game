@@ -112,7 +112,7 @@ class App extends React.Component {
       return {
         deck: randomOrder,
         deckName: deckName,
-        shape: shape
+        boardShape: shape
       };
     });
     //shape in boardscreen not updating
