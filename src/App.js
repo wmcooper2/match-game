@@ -11,13 +11,21 @@ class App extends React.Component {
     this.state = {
       boardShape: { x: 6, y: 4 },
       cards: defaultCards,
-      teamCount: 4
+      teamCount: 4,
+      teams: [
+        { name: "Team A", score: 0 },
+        { name: "Team B", score: 0 },
+        { name: "Team C", score: 0 },
+        { name: "Team D", score: 0 },
+        { name: "Team E", score: 0 },
+        { name: "Team F", score: 0 }
+      ]
     };
     this.handleClick = this.handleClick.bind(this);
     this.changeShape = this.changeShape.bind(this);
     this.changeTheme = this.changeTheme.bind(this);
     this.changeScore = this.changeScore.bind(this);
-    this.changeTeam = this.changeTeam.bind(this);
+    this.changeTeams = this.changeTeams.bind(this);
   }
 
   handleClick = props => {
@@ -46,19 +54,43 @@ class App extends React.Component {
     this.selectCards();
   };
 
-  changeScore = props => {
-    console.log("changeScore, props: ", props);
+  changeScore = (props, team) => {
+    // console.log("changeScore, props: ", props, team);
+    let teamsCopy = this.state.teams;
+    teamsCopy.forEach(item => {
+      if (item.name === team) {
+        props === "plus" ? item.score++ : item.score--;
+      }
+    });
+    console.log("teamsCopy: ", teamsCopy);
+    this.setState({
+      teams: teamsCopy
+    });
   };
 
-  changeTeam = props => {
-    console.log("changeTeam, props: ", props);
+  changeTeams = props => {
+    console.log("changeTeams, props: ", props);
 
-    let newCount =
-      props === "plus" ? this.state.teamCount + 1 : this.state.teamCount - 1;
-
+    let newCount;
+    if (props === "plus") {
+      if (this.state.teamCount >= 6) {
+        newCount = 6;
+      } else if (this.state.teamCount < 2) {
+        newCount = 2;
+      } else {
+        newCount = this.state.teamCount + 1;
+      }
+    } else {
+      if (this.state.teamCount <= 2) {
+        newCount = 0;
+      } else {
+        newCount = this.state.teamCount - 1;
+      }
+    }
     this.setState(state => {
       return { teamCount: newCount };
     });
+    console.log(this.state);
   };
 
   render() {
@@ -69,7 +101,7 @@ class App extends React.Component {
           changeShape={this.changeShape}
           changeScore={this.changeScore}
           changeTheme={this.changeTheme}
-          changeTeam={this.changeTeam}
+          changeTeams={this.changeTeams}
           {...this.state}
         />
       </div>

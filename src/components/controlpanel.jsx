@@ -1,51 +1,58 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 
-const IncDec = props => {
-  const { changeShape } = props;
+const ChangeScore = props => {
+  const { handleClick, team } = props;
   return (
     <React.Fragment>
-      <Button onClick={() => changeShape("minus")}>-</Button>
-      <Button onClick={() => changeShape("plus")}>+</Button>
+      <Button onClick={() => handleClick("minus", team)}>-</Button>
+      <Button onClick={() => handleClick("plus", team)}>+</Button>
     </React.Fragment>
   );
 };
 
 const ChangeTeams = props => {
-  const { changeTeam } = props;
+  const { handleClick } = props;
   return (
     <React.Fragment>
-      <Button onClick={() => changeTeam("minus")}>-</Button>
-      <Button onClick={() => changeTeam("plus")}>+</Button>
+      <Button onClick={() => handleClick("minus")}>-</Button>
+      <Button onClick={() => handleClick("plus")}>+</Button>
     </React.Fragment>
   );
 };
 
 const Team = props => {
+  //   console.log("Team, props: ", props);
+  const { name, score } = props;
   return (
     <div className="team">
-      <div>Name</div>
-      <div>Score</div>
-      <IncDec {...props} />
+      <div className="teamname">{name}</div>
+      <div className="teamscore">{score}</div>
+      <ChangeScore handleClick={props.changeScore} team={name} />
     </div>
   );
 };
 
 const Teams = props => {
-  console.log("Team props: ", props);
+  //   console.log("Teams props: ", props);
+  const { teams } = props;
   const { teamCount } = props;
-  let teams = [];
+  let teamsInPlay = [];
   for (let i = 0; i < teamCount; i++) {
-    teams.push(<Team key={i} {...props} />);
+    teamsInPlay.push(
+      <Team key={i} name={teams[i].name} score={teams[i].score} {...props} />
+    );
   }
-  return <div className="teams">{teams}</div>;
+  //   console.log("teams: ", teams);
+  return <div className="teams">{teamsInPlay}</div>;
 };
 
 const TeamIncDec = props => {
+  //   console.log("TeamIncDec, props: ", props);
   return (
     <div className="teamsbtn">
       <div>Teams</div>
-      <ChangeTeams {...props} />
+      <ChangeTeams handleClick={props.changeTeams} />
     </div>
   );
 };
@@ -69,7 +76,7 @@ const Settings = props => {
 };
 
 const ControlPanel = props => {
-  console.log("ControlPanel, props: ", props);
+  //   console.log("ControlPanel, props: ", props);
   return (
     <div className="controlpanel">
       <Teams {...props} />
