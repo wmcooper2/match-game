@@ -1,6 +1,6 @@
 const defaultDeck = [
-  "cat",
-  "banana",
+  "pen",
+  "David",
   "dog",
   "bird",
   "rat",
@@ -31,25 +31,42 @@ const fruits = [
   "blackberry",
   "cherry",
   "coconut",
-  "fig",
   "grape",
-  "guava",
   "grapefruit",
   "kiwi",
   "lemon",
   "lime",
   "mango",
   "melon",
-  "honeydew",
   "watermelon",
-  "nectarine",
+  "mikan",
   "orange",
   "peach",
   "pear",
   "plum",
   "raspberry",
-  "strawberry",
-  "yuzu"
+  "strawberry"
 ];
 
-export { defaultDeck, fruits };
+const animals = [
+  "cat",
+  "rat",
+  "bat",
+  "dog",
+  "bird",
+  "zebra",
+  "elephant",
+  "lion",
+  "shark",
+  "jellyfish",
+  "tuna",
+  "salmon",
+  "frog",
+  "wolf",
+  "ant",
+  "panda",
+  "bear",
+  "parrot"
+];
+
+export { defaultDeck, fruits, animals };

@@ -11,7 +11,7 @@ const Card = props => {
 };
 
 const Row = props => {
-//   console.log("Row, props: ", props);
+  //   console.log("Row, props: ", props);
   const { boardShape, deck, rowID, handleClick } = props;
   //   console.log(rowID);
   let rowCards = [];
@@ -30,10 +30,10 @@ const Row = props => {
 
 //boardshape not updating with the new shape and not being passed to the rows
 const BoardGame = props => {
-  console.log("BoardGame, props: ", props);
+  //   console.log("BoardGame, props: ", props);
   const { boardShape, deck } = props;
-  console.log("boardShape: ", boardShape);
-  console.log("deck: ", deck);
+  //   console.log("boardShape: ", boardShape);
+  //   console.log("deck: ", deck);
   let rows = [];
   for (let i = 0; i < boardShape.y; i++) {
     rows.push(

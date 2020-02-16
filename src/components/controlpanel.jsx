@@ -107,9 +107,11 @@ const SettingsBtn = props => {
 
 const ControlPanel = props => {
   //   console.log("ControlPanel, props: ", props);
+  //   const { deckName } = props;
   return (
     <div className="controlpanel">
       <TeamsList {...props} />
+      {/* <div className="deckinplay">{deckName}</div> */}
       <div className="controls">
         <TeamIncDec {...props} />
         <DecksBtn {...props} />

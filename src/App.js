@@ -3,7 +3,7 @@ import BoardGame from "./components/boardgame";
 import ControlPanel from "./components/controlpanel";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { SettingsScreen, DeckScreen } from "./components/screens";
-import { defaultDeck, fruits } from "./components/decks";
+import { defaultDeck, fruits, animals } from "./components/decks";
 import { HashRouter, Route } from "react-router-dom";
 import "./App.sass";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -29,7 +29,8 @@ class App extends React.Component {
 
     this.deckChoices = [
       { name: "default", deck: defaultDeck },
-      { name: "fruits", deck: fruits }
+      { name: "fruits", deck: fruits },
+      { name: "animals", deck: animals }
     ];
 
     this.cardClick = this.cardClick.bind(this);
@@ -79,11 +80,11 @@ class App extends React.Component {
 
     //copy so you don't ruin the original
     let deckCopy = deck[0].deck.slice();
-    console.log("deckCopy: ", deckCopy);
+    // console.log("deckCopy: ", deckCopy);
 
     // set pair limit
     const pairLimit = (shape.x * shape.y) / 2;
-    console.log("pairLimit: ", pairLimit);
+    // console.log("pairLimit: ", pairLimit);
 
     // choose (pair limit) random deck
     let newCards = [];
@@ -92,11 +93,11 @@ class App extends React.Component {
       newCards.push(deckCopy[choice]);
       deckCopy.splice(choice, 1);
     }
-    console.log("newCards, before: ", newCards);
+    // console.log("newCards, before: ", newCards);
 
     // make pairs of the deck
     newCards = newCards.concat(newCards);
-    console.log("newCards, after: ", newCards);
+    // console.log("newCards, after: ", newCards);
 
     // randomize the final deck of deck
     let randomOrder = [];
@@ -106,7 +107,7 @@ class App extends React.Component {
       randomOrder.push(newCards[choice]);
       newCards.splice(choice, 1);
     }
-    console.log("randomOrder: ", randomOrder);
+    // console.log("randomOrder: ", randomOrder);
 
     this.setState(() => {
       return {
@@ -115,11 +116,10 @@ class App extends React.Component {
         boardShape: shape
       };
     });
-    //shape in boardscreen not updating
   };
 
   changeShape = props => {
-    console.log("changeShape, props: ", props);
+    // console.log("changeShape, props: ", props);
     //filter the object that matches the size
     let newShape = boardShapes.filter(item => item.size === props);
 
@@ -137,7 +137,7 @@ class App extends React.Component {
   };
 
   changeDeck = props => {
-    console.log("changeDeck, props: ", props);
+    // console.log("changeDeck, props: ", props);
     let newDeck = this.deckChoices.filter(choice => choice.name === props);
     this.setState(() => {
       return { deckName: newDeck[0].name };
