@@ -7,27 +7,27 @@ const Card = props => {
   return (
     <div className="card" onClick={() => handleClick(card)}>
       <img className="thumb" src={card.image} alt="card thumb"></img>
-      <div className="flip-card-back">{cardID + 1}</div>
+      <div>{cardID + 1}</div>
     </div>
   );
 };
 
-const FlipCardFront = props => {
+const FlipCardBack = props => {
   const { card, cardID, handleClick } = props;
   return (
     <img
       onClick={() => handleClick(cardID)}
-      className="card thumb"
+      className="card card-back thumb"
       src={card.image}
       alt="card thumb"
     ></img>
   );
 };
 
-const FlipCardBack = props => {
+const FlipCardFront = props => {
   const { cardID, handleClick } = props;
   return (
-    <div className="card" onClick={() => handleClick(cardID)}>
+    <div className="card card-front" onClick={() => handleClick(cardID)}>
       {cardID + 1}
     </div>
   );

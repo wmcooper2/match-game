@@ -4,7 +4,7 @@ import ControlPanel from "./components/controlpanel";
 import { Teams } from "./teams";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { SettingsScreen, DeckScreen } from "./components/screens";
-import { defaultDeck, fruits, animals } from "./decks";
+import { testDeck, fruits, animals } from "./decks";
 import { HashRouter, Route } from "react-router-dom";
 import "./App.sass";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,17 +14,17 @@ class App extends React.Component {
     super(props);
     this.state = {
       boardShape: defaultShape,
-      deck: defaultDeck,
-      deckName: "default",
+      deck: testDeck,
+      deckName: "testdeck",
       currentScreen: "game",
       teamCount: 4,
       teams: Teams
     };
 
     this.deckChoices = [
-      { name: "default", deck: defaultDeck },
       { name: "fruits", deck: fruits },
-      { name: "animals", deck: animals }
+      { name: "animals", deck: animals },
+      { name: "testdeck", deck: testDeck }
     ];
 
     this.cardClick = this.cardClick.bind(this);
@@ -37,21 +37,21 @@ class App extends React.Component {
   }
 
   cardClick = props => {
-    console.log("cardClick: ", props);
+    // console.log("cardClick: ", props);
     let deck = this.state.deck.slice();
-    console.log("you chose: ", deck[props]);
+    // console.log("you chose: ", deck[props]);
     //toggle its flipped value
     deck[props].flipped = !deck[props].flipped;
     this.setState({
       deck: deck
     });
-    console.log("after click: ", this.state.deck);
+    // console.log("after click: ", this.state.deck);
   };
 
   updateBoard = props => {
     // console.log("updateBoard, props: ", props);
     //defaults for this function
-    let deck = this.deckChoices.filter(choice => choice.name === "default");
+    let deck = this.deckChoices.filter(choice => choice.name === "testdeck");
     let deckName = this.state.deckName;
     let shape = this.state.boardShape;
     // console.log("before deckName: ", deckName);

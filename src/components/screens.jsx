@@ -20,7 +20,7 @@ const SettingsScreen = props => {
   return (
     <div className="screen">
       <div className="instructions">Choose the number of cards you want.</div>
-      {shapes.reverse()}
+      <div className="shapechoices">{shapes.reverse()}</div>
     </div>
   );
 };
@@ -41,7 +41,12 @@ const DeckScreen = props => {
     )
   );
 
-  return <div className="screen">{decks}</div>;
+  return (
+    <div className="screen">
+      <div className="instructions">Choose the deck you want.</div>
+      <div className="deckchoices">{decks}</div>
+    </div>
+  );
 };
 
 export { SettingsScreen, DeckScreen };

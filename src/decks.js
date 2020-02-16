@@ -1,31 +1,3 @@
-const defaultDeck = [
-  { name: "pen", image: "thumbs/pen.jpg", flipped: false },
-  { name: "David", image: "thumbs/David.jpg", flipped: false },
-  { name: "dog", image: "thumbs/dog.jpg", flipped: false },
-  { name: "bird", image: "thumbs/bird.jpg", flipped: false },
-  { name: "rat", image: "thumbs/rat.jpg", flipped: false },
-  { name: "duck", image: "thumbs/duck.jpg", flipped: false },
-  { name: "cheetah", image: "thumbs/cheetah.jpg", flipped: false },
-  { name: "elephant", image: "thumbs/elephant.png", flipped: false },
-  { name: "fish", image: "thumbs/fish.png", flipped: false },
-  { name: "horse", image: "thumbs/horse.jpg", flipped: false },
-  { name: "jellyfish", image: "thumbs/jellyfish.jpg", flipped: false },
-  { name: "shark", image: "thumbs/shark.jpg", flipped: false },
-  { name: "lion", image: "thumbs/lion.jpg", flipped: false },
-  { name: "zebra", image: "thumbs/zebra.jpg", flipped: false },
-  { name: "raccoon", image: "thumbs/raccoon.jpg", flipped: false },
-  { name: "sparrow", image: "thumbs/sparrow.jpg", flipped: false },
-  { name: "pikachu", image: "thumbs/pikachu.jpg", flipped: false },
-  { name: "donut", image: "thumbs/donut.jpg", flipped: false },
-  { name: "cheese", image: "thumbs/cheese.jpg", flipped: false },
-  { name: "apple", image: "thumbs/apple.jpg", flipped: false },
-  { name: "yes", image: "thumbs/yes.jpg", flipped: false },
-  { name: "book", image: "thumbs/book.png", flipped: false },
-  { name: "art", image: "thumbs/art.jpg", flipped: false },
-  { name: "pumpkin", image: "thumbs/pumpkin.png", flipped: false },
-  { name: "youtube", image: "thumbs/youtube.jpg", flipped: false }
-];
-
 const fruits = [
   { name: "apple", image: "thumbs/apple.jpg", flipped: false },
   { name: "banana", image: "thumbs/banana.jpg", flipped: false },
@@ -70,4 +42,32 @@ const animals = [
   { name: "parrot", image: "thumbs/parrot.jpg", flipped: false }
 ];
 
-export { defaultDeck, fruits, animals };
+const testDeck = [
+  { name: "pen", image: "thumbs/pen.jpg", flipped: false },
+  { name: "David", image: "thumbs/David.jpg", flipped: false },
+  { name: "dog", image: "thumbs/dog.jpg", flipped: false },
+  { name: "bird", image: "thumbs/bird.jpg", flipped: false },
+  { name: "rat", image: "thumbs/rat.jpg", flipped: false },
+  { name: "duck", image: "thumbs/duck.jpg", flipped: false },
+  { name: "cheetah", image: "thumbs/cheetah.jpg", flipped: false },
+  { name: "elephant", image: "thumbs/elephant.png", flipped: false },
+  { name: "fish", image: "thumbs/fish.png", flipped: false },
+  { name: "horse", image: "thumbs/horse.jpg", flipped: false },
+  { name: "jellyfish", image: "thumbs/jellyfish.jpg", flipped: false },
+  { name: "shark", image: "thumbs/shark.jpg", flipped: false },
+  { name: "lion", image: "thumbs/lion.jpg", flipped: false },
+  { name: "zebra", image: "thumbs/zebra.jpg", flipped: false },
+  { name: "raccoon", image: "thumbs/raccoon.jpg", flipped: false },
+  { name: "sparrow", image: "thumbs/sparrow.jpg", flipped: false },
+  { name: "pikachu", image: "thumbs/pikachu.jpg", flipped: false },
+  { name: "donut", image: "thumbs/donut.jpg", flipped: false },
+  { name: "cheese", image: "thumbs/cheese.jpg", flipped: false },
+  { name: "apple", image: "thumbs/apple.jpg", flipped: false },
+  { name: "yes", image: "thumbs/yes.jpg", flipped: false },
+  { name: "book", image: "thumbs/book.png", flipped: false },
+  { name: "art", image: "thumbs/art.jpg", flipped: false },
+  { name: "pumpkin", image: "thumbs/pumpkin.png", flipped: false },
+  { name: "youtube", image: "thumbs/youtube.jpg", flipped: false }
+];
+
+export { testDeck, fruits, animals };
