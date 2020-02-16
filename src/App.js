@@ -45,23 +45,18 @@ class App extends React.Component {
     this.setState({
       deck: deck
     });
+    console.log("after click: ", this.state.deck);
   };
 
   updateBoard = props => {
-    // console.log(typeof props);
     // console.log("updateBoard, props: ", props);
-    //load a fresh collection of the chosen deck
-    // console.log("current deckName: ", this.state.deckName);
-    // console.log("current deck: ", this.state.deck);
-    // console.log("current boardShape: ", this.state.boardShape);
-
     //defaults for this function
     let deck = this.deckChoices.filter(choice => choice.name === "default");
     let deckName = this.state.deckName;
     let shape = this.state.boardShape;
-    console.log("before deckName: ", deckName);
-    console.log("before deck: ", deck[0].deck);
-    console.log("before shape: ", shape);
+    // console.log("before deckName: ", deckName);
+    // console.log("before deck: ", deck[0].deck);
+    // console.log("before shape: ", shape);
 
     //only change the state of the chosen prop
     if (typeof props === "string") {
@@ -75,9 +70,9 @@ class App extends React.Component {
     }
 
     //check the state
-    console.log("after deckName: ", deckName);
-    console.log("after deck: ", deck[0].deck);
-    console.log("after shape: ", shape);
+    // console.log("after deckName: ", deckName);
+    // console.log("after deck: ", deck[0].deck);
+    // console.log("after shape: ", shape);
 
     //copy so you don't ruin the original
     let deckCopy = deck[0].deck.slice();
@@ -96,8 +91,13 @@ class App extends React.Component {
     }
     // console.log("newCards, before: ", newCards);
 
-    // make pairs of the deck
-    newCards = newCards.concat(newCards);
+    // make pairs of the deck, slice copies refs... use map
+    //const copy = array.map(object => ({ ...object })):w
+    const noRefCopy = newCards.map(item => {
+      return { ...item };
+    });
+    // console.log("noRefCopy: ", noRefCopy);
+    newCards = newCards.concat(noRefCopy);
     // console.log("newCards, after: ", newCards);
 
     // randomize the final deck of deck
@@ -117,6 +117,7 @@ class App extends React.Component {
         boardShape: shape
       };
     });
+    console.log("updateBoard: ", this.state.deck);
   };
 
   changeShape = props => {

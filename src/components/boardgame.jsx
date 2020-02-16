@@ -34,7 +34,7 @@ const FlipCardBack = props => {
 };
 
 const FlipCard = props => {
-  console.log("FlipCard, props: ", props);
+  //   console.log("FlipCard, props: ", props);
   const { card } = props;
   return (
     <ReactCardFlip isFlipped={card.flipped} flipDirection="horizontal">
