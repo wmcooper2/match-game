@@ -11,7 +11,7 @@
 # production
 /build
 /public/thumbs
-/matching-game
+/match-game
 
 # misc
 .DS_Store

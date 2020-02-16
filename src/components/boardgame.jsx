@@ -1,17 +1,6 @@
 import React from "react";
 import ReactCardFlip from "react-card-flip";
 
-const Card = props => {
-  //   console.log("CardID: ", props);
-  const { card, handleClick, cardID } = props;
-  return (
-    <div className="card" onClick={() => handleClick(card)}>
-      <img className="thumb" src={card.image} alt="card thumb"></img>
-      <div>{cardID + 1}</div>
-    </div>
-  );
-};
-
 const FlipCardBack = props => {
   const { card, cardID, handleClick } = props;
   return (

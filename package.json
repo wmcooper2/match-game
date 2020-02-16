@@ -1,8 +1,8 @@
 {
-  "name": "matching-game",
+  "name": "match-game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://52.194.110.101/matching-game",
+  "homepage": "http://52.194.110.101/match-game",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",

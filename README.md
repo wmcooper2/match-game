@@ -1,2 +1,2 @@
 ### Notes
-* Rename build folder to "matching-game"
+* Rename build folder to "match-game"
