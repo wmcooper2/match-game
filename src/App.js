@@ -1,9 +1,10 @@
 import React from "react";
 import BoardGame from "./components/boardgame";
 import ControlPanel from "./components/controlpanel";
+import { Teams } from "./teams";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { SettingsScreen, DeckScreen } from "./components/screens";
-import { defaultDeck, fruits, animals } from "./components/decks";
+import { defaultDeck, fruits, animals } from "./decks";
 import { HashRouter, Route } from "react-router-dom";
 import "./App.sass";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,14 +18,7 @@ class App extends React.Component {
       deckName: "default",
       currentScreen: "game",
       teamCount: 4,
-      teams: [
-        { name: "Team A", score: 0 },
-        { name: "Team B", score: 0 },
-        { name: "Team C", score: 0 },
-        { name: "Team D", score: 0 },
-        { name: "Team E", score: 0 },
-        { name: "Team F", score: 0 }
-      ]
+      teams: Teams
     };
 
     this.deckChoices = [

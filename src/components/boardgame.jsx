@@ -1,11 +1,11 @@
 import React from "react";
 
 const Card = props => {
-  //   console.log("CardID: ", props.cardID);
+  console.log("CardID: ", props);
   const { card, handleClick } = props;
   return (
     <div className="card" onClick={() => handleClick(card)}>
-      {card}
+      <img className="thumb" src={card.image} alt="card thumb"></img>
     </div>
   );
 };

@@ -1,0 +1,73 @@
+const defaultDeck = [
+  { name: "pen", image: "thumbs/pen.jpg" },
+  { name: "David", image: "thumbs/David.jpg" },
+  { name: "dog", image: "thumbs/dog.jpg" },
+  { name: "bird", image: "thumbs/bird.jpg" },
+  { name: "rat", image: "thumbs/rat.jpg" },
+  { name: "duck", image: "thumbs/duck.jpg" },
+  { name: "cheetah", image: "thumbs/cheetah.jpg" },
+  { name: "elephant", image: "thumbs/elephant.png" },
+  { name: "fish", image: "thumbs/fish.png" },
+  { name: "horse", image: "thumbs/horse.jpg" },
+  { name: "jellyfish", image: "thumbs/jellyfish.jpg" },
+  { name: "shark", image: "thumbs/shark.jpg" },
+  { name: "lion", image: "thumbs/lion.jpg" },
+  { name: "zebra", image: "thumbs/zebra.jpg" },
+  { name: "raccoon", image: "thumbs/raccoon.jpg" },
+  { name: "sparrow", image: "thumbs/sparrow.jpg" },
+  { name: "pikachu", image: "thumbs/pikachu.jpg" },
+  { name: "donut", image: "thumbs/donut.jpg" },
+  { name: "cheese", image: "thumbs/cheese.jpg" },
+  { name: "apple", image: "thumbs/apple.jpg" },
+  { name: "yes", image: "thumbs/yes.jpg" },
+  { name: "book", image: "thumbs/book.png" },
+  { name: "art", image: "thumbs/art.jpg" },
+  { name: "pumpkin", image: "thumbs/pumpkin.png" },
+  { name: "youtube", image: "thumbs/youtube.jpg" }
+];
+
+const fruits = [
+  { name: "apple", image: "thumbs/apple.jpg" },
+  { name: "banana", image: "thumbs/banana.jpg" },
+  { name: "blackberry", image: "thumbs/blackberry.jpg" },
+  { name: "cherry", image: "thumbs/cherry.jpg" },
+  { name: "coconut", image: "thumbs/coconut.png" },
+  { name: "grape", image: "thumbs/grape.jpg" },
+  { name: "grapefruit", image: "thumbs/grapefruit.jpg" },
+  { name: "kiwi", image: "thumbs/kiwi.jpg" },
+  { name: "lemon", image: "thumbs/lemon.png" },
+  { name: "lime", image: "thumbs/lime.jpg" },
+  { name: "mango", image: "thumbs/mango.jpg" },
+  { name: "melon", image: "thumbs/melon.jpg" },
+  { name: "watermelon", image: "thumbs/watermelon.jpg" },
+  { name: "mikan", image: "thumbs/mikan.jpg" },
+  { name: "orange", image: "thumbs/orange.jpg" },
+  { name: "peach", image: "thumbs/peach.jpg" },
+  { name: "pear", image: "thumbs/pear.jpg" },
+  { name: "plum", image: "thumbs/plum.png" },
+  { name: "raspberry", image: "thumbs/raspberry.jpg" },
+  { name: "strawberry", image: "thumbs/strawberry.jpg" }
+];
+
+const animals = [
+  { name: "cat", image: "thumbs/cat.jpg" },
+  { name: "rat", image: "thumbs/rat.jpg" },
+  { name: "bat", image: "thumbs/bat.jpg" },
+  { name: "dog", image: "thumbs/dog.jpg" },
+  { name: "bird", image: "thumbs/bird.jpg" },
+  { name: "zebra", image: "thumbs/zebra.jpg" },
+  { name: "elephant", image: "thumbs/elephant.png" },
+  { name: "lion", image: "thumbs/lion.jpg" },
+  { name: "shark", image: "thumbs/shark.jpg" },
+  { name: "jellyfish", image: "thumbs/jellyfish.jpg" },
+  { name: "tuna", image: "thumbs/tuna.png" },
+  { name: "salmon", image: "thumbs/salmon.jpg" },
+  { name: "frog", image: "thumbs/frog.jpg" },
+  { name: "wolf", image: "thumbs/wolf.png" },
+  { name: "ant", image: "thumbs/ant.jpg" },
+  { name: "panda", image: "thumbs/panda.jpg" },
+  { name: "bear", image: "thumbs/bear.jpg" },
+  { name: "parrot", image: "thumbs/parrot.jpg" }
+];
+
+export { defaultDeck, fruits, animals };
