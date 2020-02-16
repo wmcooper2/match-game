@@ -1,12 +1,46 @@
 import React from "react";
+import ReactCardFlip from "react-card-flip";
 
 const Card = props => {
-  console.log("CardID: ", props);
-  const { card, handleClick } = props;
+  //   console.log("CardID: ", props);
+  const { card, handleClick, cardID } = props;
   return (
     <div className="card" onClick={() => handleClick(card)}>
       <img className="thumb" src={card.image} alt="card thumb"></img>
+      <div className="flip-card-back">{cardID + 1}</div>
     </div>
+  );
+};
+
+const FlipCardFront = props => {
+  const { card, cardID, handleClick } = props;
+  return (
+    <img
+      onClick={() => handleClick(cardID)}
+      className="card thumb"
+      src={card.image}
+      alt="card thumb"
+    ></img>
+  );
+};
+
+const FlipCardBack = props => {
+  const { cardID, handleClick } = props;
+  return (
+    <div className="card" onClick={() => handleClick(cardID)}>
+      {cardID + 1}
+    </div>
+  );
+};
+
+const FlipCard = props => {
+  console.log("FlipCard, props: ", props);
+  const { card } = props;
+  return (
+    <ReactCardFlip isFlipped={card.flipped} flipDirection="horizontal">
+      <FlipCardFront {...props} />
+      <FlipCardBack {...props} />
+    </ReactCardFlip>
   );
 };
 
@@ -17,7 +51,7 @@ const Row = props => {
   let rowCards = [];
   for (let i = 0; i < boardShape.x; i++) {
     rowCards.push(
-      <Card
+      <FlipCard
         key={boardShape.x * rowID + i}
         cardID={boardShape.x * rowID + i}
         card={deck[boardShape.x * rowID + i]}

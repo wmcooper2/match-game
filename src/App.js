@@ -37,7 +37,14 @@ class App extends React.Component {
   }
 
   cardClick = props => {
-    console.log(props);
+    console.log("cardClick: ", props);
+    let deck = this.state.deck.slice();
+    console.log("you chose: ", deck[props]);
+    //toggle its flipped value
+    deck[props].flipped = !deck[props].flipped;
+    this.setState({
+      deck: deck
+    });
   };
 
   updateBoard = props => {
