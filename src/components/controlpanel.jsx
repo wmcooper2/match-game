@@ -72,7 +72,7 @@ const DecksBtn = props => {
     return (
       <Link to="/decks">
         <Button onClick={() => changeScreen("decks")} variant="primary" block>
-          Decks
+          Vocab
         </Button>
       </Link>
     );
@@ -98,7 +98,7 @@ const SettingsBtn = props => {
           variant="primary"
           block
         >
-          Settings
+          Cards
         </Button>
       </Link>
     );
@@ -112,6 +112,9 @@ const ControlPanel = props => {
     <div className="controlpanel">
       <TeamsList {...props} />
       {/* <div className="deckinplay">{deckName}</div> */}
+      <div className="instructions">
+        Choose a vocab set and how many cards before playing.
+      </div>
       <div className="controls">
         <TeamIncDec {...props} />
         <DecksBtn {...props} />

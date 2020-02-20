@@ -1,52 +1,44 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 
-const SettingsScreen = props => {
-  // console.log("SettingsScreen, props: ", props);
-  const { updateBoard, choices } = props;
+const BoardShapeScreen = props => {
+  // console.log("BoardShapeScreen, props: ", props);
+  const { changeBoardShape, choices } = props;
   let shapes = [];
   choices.forEach(choice => {
     shapes.push(
       <Button
         key={choice.size}
         className="deck"
-        onClick={() => updateBoard(choice.size)}
+        onClick={() => changeBoardShape(choice.size)}
+        style={{ fontSize: "3em", width: "3em", height: "3em" }}
       >
         {choice.size}
       </Button>
     );
   });
 
-  return (
-    <div className="screen">
-      <div className="instructions">Choose the number of cards you want.</div>
-      <div className="shapechoices">{shapes.reverse()}</div>
-    </div>
-  );
+  return <div className="screen"> {shapes.reverse()} </div>;
 };
 
-const DeckScreen = props => {
-  // console.log("DeckScreen, props: ", props);
-  const { updateBoard, choices } = props;
+const VocabScreen = props => {
+  // console.log("VocabScreen, props: ", props);
+  const { changeVocab, choices } = props;
   let decks = [];
   choices.forEach(choice =>
     decks.push(
       <Button
         key={choice.name}
         className="deck"
-        onClick={() => updateBoard(choice.name)}
+        onClick={() => changeVocab(choice.name)}
+        style={{ fontSize: "3em", width: "auto", height: "3em" }}
       >
         {choice.name}
       </Button>
     )
   );
 
-  return (
-    <div className="screen">
-      <div className="instructions">Choose the deck you want.</div>
-      <div className="deckchoices">{decks}</div>
-    </div>
-  );
+  return <div className="screen"> {decks} </div>;
 };
 
-export { SettingsScreen, DeckScreen };
+export { VocabScreen, BoardShapeScreen };

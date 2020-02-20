@@ -1,18 +1,6 @@
 import React from "react";
 import ReactCardFlip from "react-card-flip";
 
-const FlipCardBack = props => {
-  const { card, cardID, handleClick } = props;
-  return (
-    <img
-      onClick={() => handleClick(cardID)}
-      className="card card-back thumb"
-      src={card.image}
-      alt="card thumb"
-    ></img>
-  );
-};
-
 const FlipCardFront = props => {
   const { cardID, handleClick } = props;
   return (
@@ -22,8 +10,20 @@ const FlipCardFront = props => {
   );
 };
 
+const FlipCardBack = props => {
+  const { card, cardID, handleClick } = props;
+  return (
+    <img
+      onClick={() => handleClick(cardID)}
+      className="card card-back"
+      src={card.image}
+      alt="card"
+    ></img>
+  );
+};
+
 const FlipCard = props => {
-  //   console.log("FlipCard, props: ", props);
+  // console.log("FlipCard, props: ", props);
   const { card } = props;
   return (
     <ReactCardFlip isFlipped={card.flipped} flipDirection="horizontal">
@@ -53,7 +53,7 @@ const Row = props => {
 
 //boardshape not updating with the new shape and not being passed to the rows
 const BoardGame = props => {
-  //   console.log("BoardGame, props: ", props);
+  // console.log("BoardGame, props: ", props);
   const { boardShape, deck } = props;
   //   console.log("boardShape: ", boardShape);
   //   console.log("deck: ", deck);

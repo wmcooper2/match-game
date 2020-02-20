@@ -1,4 +1,4 @@
-const defaultShape = { size: 24, x: 6, y: 4 };
+const defaultShape = { size: 8, x: 4, y: 2 };
 const boardShapes = [
   { size: 24, x: 6, y: 4 },
   { size: 20, x: 5, y: 4 },
