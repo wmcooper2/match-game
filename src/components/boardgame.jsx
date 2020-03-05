@@ -23,7 +23,6 @@ const FlipCardBack = props => {
 };
 
 const FlipCard = props => {
-  // console.log("FlipCard, props: ", props);
   const { card } = props;
   return (
     <ReactCardFlip isFlipped={card.flipped} flipDirection="horizontal">
@@ -34,9 +33,7 @@ const FlipCard = props => {
 };
 
 const Row = props => {
-  //   console.log("Row, props: ", props);
   const { boardShape, deck, rowID, handleClick } = props;
-  //   console.log(rowID);
   let rowCards = [];
   for (let i = 0; i < boardShape.x; i++) {
     rowCards.push(
@@ -51,12 +48,8 @@ const Row = props => {
   return <div className="row">{rowCards}</div>;
 };
 
-//boardshape not updating with the new shape and not being passed to the rows
 const BoardGame = props => {
-  // console.log("BoardGame, props: ", props);
   const { boardShape, deck } = props;
-  //   console.log("boardShape: ", boardShape);
-  //   console.log("deck: ", deck);
   let rows = [];
   for (let i = 0; i < boardShape.y; i++) {
     rows.push(

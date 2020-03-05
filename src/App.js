@@ -108,7 +108,6 @@ class App extends React.Component {
         props === "plus" ? item.score++ : item.score--;
       }
     });
-    // console.log("teamsCopy: ", teamsCopy);
     this.setState({
       teams: teamsCopy
     });
@@ -138,7 +137,7 @@ class App extends React.Component {
 
   changeScreen = props => {
     if (props === "/") {
-      //game screen
+      //return to game board screen
       this.updateBoard();
     }
     this.setState({
