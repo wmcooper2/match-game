@@ -1,13 +1,13 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 import { Link } from "react-router-dom";
 
 const ChangeScore = props => {
   const { handleClick, team } = props;
   return (
     <React.Fragment>
-      <Button onClick={() => handleClick("minus", team)}>-</Button>
-      <Button onClick={() => handleClick("plus", team)}>+</Button>
+      <button onClick={() => handleClick("minus", team)}>-</button>
+      <button onClick={() => handleClick("plus", team)}>+</button>
     </React.Fragment>
   );
 };
@@ -16,19 +16,25 @@ const ChangeTeams = props => {
   const { handleClick } = props;
   return (
     <React.Fragment>
-      <Button onClick={() => handleClick("minus")}>-</Button>
-      <Button onClick={() => handleClick("plus")}>+</Button>
+      <button onClick={() => handleClick("minus")}>-</button>
+      <button onClick={() => handleClick("plus")}>+</button>
     </React.Fragment>
   );
 };
 
 const Team = props => {
   //   console.log("Team, props: ", props);
-  const { name, score } = props;
+  const { name, score, updateTeamName } = props;
+  console.log("team nameIndex: ", props);
   return (
     <div className="team">
-      <div className="teamname">{name}</div>
-      <div className="teamscore">{score}</div>
+      <input
+        type="text"
+        className="teamname"
+        placeholder={name}
+        onChange={() => updateTeamName(name)}
+      ></input>
+      <span className="teamscore">{score}</span>
       <ChangeScore handleClick={props.changeScore} team={name} />
     </div>
   );
@@ -36,12 +42,18 @@ const Team = props => {
 
 const TeamsList = props => {
   //   console.log("Teams props: ", props);
-  const { teams } = props;
-  const { teamCount } = props;
+  const { teams, teamCount, updateTeamName } = props;
   let teamsInPlay = [];
   for (let i = 0; i < teamCount; i++) {
     teamsInPlay.push(
-      <Team key={i} name={teams[i].name} score={teams[i].score} {...props} />
+      <Team
+        key={i}
+        name={teams[i].name}
+        score={teams[i].score}
+        updateTeamName={updateTeamName}
+        nameIndex={i}
+        {...props}
+      />
     );
   }
   return <div className="teams">{teamsInPlay}</div>;
@@ -63,17 +75,17 @@ const DecksBtn = props => {
   if (currentScreen === "decks") {
     return (
       <Link to="/">
-        <Button onClick={() => changeScreen("/")} variant="primary" block>
+        <button onClick={() => changeScreen("/")} variant="primary" block>
           Game
-        </Button>
+        </button>
       </Link>
     );
   } else {
     return (
       <Link to="/decks">
-        <Button onClick={() => changeScreen("decks")} variant="primary" block>
+        <button onClick={() => changeScreen("decks")} variant="primary" block>
           Vocab
-        </Button>
+        </button>
       </Link>
     );
   }
@@ -85,21 +97,21 @@ const SettingsBtn = props => {
   if (currentScreen === "settings") {
     return (
       <Link to="/">
-        <Button onClick={() => changeScreen("/")} variant="primary" block>
+        <button onClick={() => changeScreen("/")} variant="primary" block>
           Game
-        </Button>
+        </button>
       </Link>
     );
   } else {
     return (
       <Link to="settings">
-        <Button
+        <button
           onClick={() => changeScreen("settings")}
           variant="primary"
           block
         >
           Cards
-        </Button>
+        </button>
       </Link>
     );
   }
@@ -108,10 +120,13 @@ const SettingsBtn = props => {
 const ControlPanel = props => {
   //   console.log("ControlPanel, props: ", props);
   //   const { deckName } = props;
+  const { updateTeamName } = props;
   return (
     <div className="controlpanel">
-      <TeamsList {...props} />
-      {/* <div className="deckinplay">{deckName}</div> */}
+      <InputGroup>
+        <TeamsList {...props} updateTeamName={updateTeamName} />
+        {/* <div className="deckinplay">{deckName}</div> */}
+      </InputGroup>
       <div className="instructions">
         Choose a vocab set and how many cards before playing.
       </div>

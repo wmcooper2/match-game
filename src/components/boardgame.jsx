@@ -4,7 +4,10 @@ import ReactCardFlip from "react-card-flip";
 const FlipCardFront = props => {
   const { cardID, handleClick } = props;
   return (
-    <div className="card card-front" onClick={() => handleClick(cardID)}>
+    <div
+      className="card card-front"
+      onClick={() => handleClick(cardID)}
+    >
       {cardID + 1}
     </div>
   );
@@ -18,6 +21,7 @@ const FlipCardBack = props => {
       className="card card-back"
       src={card.image}
       alt="card"
+      style={{ border: "none" }}
     ></img>
   );
 };

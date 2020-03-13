@@ -7,4 +7,5 @@ const Teams = [
   { name: "Team F", score: 0 }
 ];
 
+
 export { Teams };

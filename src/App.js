@@ -4,7 +4,7 @@ import ControlPanel from "./components/controlpanel";
 import { Teams } from "./teams";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/screens";
-import { testDeck, fruits, animals, colors } from "./decks";
+import { misc, fruits, animals, colors } from "./decks";
 import { HashRouter, Route } from "react-router-dom";
 import "./App.sass";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,15 +14,15 @@ class App extends React.Component {
     super(props);
     this.state = {
       boardShape: defaultShape,
-      deck: testDeck,
-      deckName: "testdeck",
+      deck: misc,
+      deckName: "misc",
       currentScreen: "game",
       teamCount: 4,
       teams: Teams
     };
 
     this.deckChoices = [
-      { name: "testdeck", deck: testDeck },
+      { name: "misc", deck: misc },
       { name: "colors", deck: colors },
       { name: "fruits", deck: fruits },
       { name: "animals", deck: animals }
@@ -35,6 +35,7 @@ class App extends React.Component {
     this.changeTeams = this.changeTeams.bind(this);
     this.changeScreen = this.changeScreen.bind(this);
     this.updateBoard = this.updateBoard.bind(this);
+    this.updateTeamName = this.updateTeamName.bind(this);
   }
 
   cardClick = props => {
@@ -135,6 +136,13 @@ class App extends React.Component {
     });
   };
 
+  updateTeamName = props => {
+    // console.log("updateTeamName: ", team, name);
+    console.log("update team name: ", props);
+    // let teams = this.state.Teams;
+    // teams.indexOf(team);
+  };
+
   changeScreen = props => {
     if (props === "/") {
       //return to game board screen
@@ -182,6 +190,7 @@ class App extends React.Component {
             changeScore={this.changeScore}
             changeScreen={this.changeScreen}
             changeTeams={this.changeTeams}
+            updateTeamName={this.updateTeamName}
             {...this.state}
           />
         </div>

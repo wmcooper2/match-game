@@ -306,7 +306,7 @@ const animals = [
   }
 ];
 
-const testDeck = [
+const misc = [
   {
     name: "pen",
     image:
@@ -459,4 +459,4 @@ const testDeck = [
   }
 ];
 
-export { testDeck, fruits, animals, colors };
+export { misc, fruits, animals, colors };

@@ -1,9 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap')
-$cardW: 120px
-$cardH: 130px
-$Font: 'Rubik', sans-serif
+$fontColor: rgb(0,0,0)
 $controlPanelColor:  rgba(22, 122, 246, 1)
-$LightGreen: rgba(151, 250, 150, 1)
+$lightGreen: rgba(151, 250, 150, 1)
+$lightBlue: rgb(146, 193, 255)
+
+$controlPanelW: 20vw
+$cardW: (90vw - $controlPanelW)/6
+$cardH: 90vh/4
+$teamNameW: 40%
+$font: 'Rubik', sans-serif
+$softBorder: 3px
+$boardW: 90vw
+$smallBoardW: 85vw
+$smallMarginW: 2vw
+
+#root
+  background-color: $lightBlue
 
 .main
   display: flex
@@ -14,17 +26,18 @@ $LightGreen: rgba(151, 250, 150, 1)
   margin: auto auto
 
 .board
-  width: 90%
+  width: $boardW
   height: 100%
   display: flex
   flex-direction: column
-  justify-content: space-around
+  justify-content: space-evenly
 
 .screen
-  width: 90%
-  height: 100%
+  width: $smallBoardW
+  height: 100vmax
   display: flex
   flex-direction: row
+  flex-wrap: wrap
   justify-content: center
   align-items: center
 
@@ -36,12 +49,13 @@ $LightGreen: rgba(151, 250, 150, 1)
   border-radius: 3px
   width: $cardW
   height: $cardH
+  box-shadow: inset 0px 0px 1px 1px black
 
 .card:hover
   box-shadow: 0px 0px 2px 2px
 
 .card-front
-  font-family: $Font
+  font-family: $font
   display: flex
   justify-content: center
   align-items: center
@@ -49,26 +63,38 @@ $LightGreen: rgba(151, 250, 150, 1)
 
 .controlpanel
   display: flex
-  background-color: $controlPanelColor
+  background-color: $lightBlue
   flex-direction: column
   justify-content: space-between
   align-items: center
-  font-family: $Font
-  width: 15%
+  font-family: $font
+  width: $controlPanelW
   height: 100%
 
 .teams
   display: flex
   flex-direction: column
-  justify-content: flex-start
+  justify-content: space-evenly
 
 .team, .teamsbtn
   display: flex
   flex-direction: row
+  justify-content: space-between
   align-items: center
 
-.teamname, .teamscore
-  margin: auto 10px
+.teamscore
+  margin: auto auto
+
+.teamname
+  margin-left: 1vw
+
+input
+  width: $teamNameW
+  color: $fontColor
+  border-radius: $softBorder
+  border: none
+  padding: 3px
+  align-text: center
 
 .instructions
   color: white
@@ -78,9 +104,4 @@ $LightGreen: rgba(151, 250, 150, 1)
   display: flex
   flex-direction: column
   justify-content: flex-start
-  background-color: $controlPanelColor
-
-.deck
-  display: flex
-  justify-content: center
-  margin: 2px
+  background-color: $lightBlue
