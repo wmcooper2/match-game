@@ -32,7 +32,7 @@ class App extends React.Component {
     this.changeBoardShape = this.changeBoardShape.bind(this);
     this.changeVocab = this.changeVocab.bind(this);
     this.changeScore = this.changeScore.bind(this);
-    this.changeTeams = this.changeTeams.bind(this);
+    this.teamIncDec = this.teamIncDec.bind(this);
     this.changeScreen = this.changeScreen.bind(this);
     this.updateBoard = this.updateBoard.bind(this);
     this.updateTeamName = this.updateTeamName.bind(this);
@@ -114,7 +114,7 @@ class App extends React.Component {
     });
   };
 
-  changeTeams = props => {
+  teamIncDec = props => {
     let newCount;
     if (props === "plus") {
       if (this.state.teamCount >= 6) {
@@ -189,7 +189,7 @@ class App extends React.Component {
           <ControlPanel
             changeScore={this.changeScore}
             changeScreen={this.changeScreen}
-            changeTeams={this.changeTeams}
+            teamIncDec={this.teamIncDec}
             updateTeamName={this.updateTeamName}
             {...this.state}
           />

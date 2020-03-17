@@ -3,16 +3,18 @@ $fontColor: rgb(0,0,0)
 $controlPanelColor:  rgba(22, 122, 246, 1)
 $lightGreen: rgba(151, 250, 150, 1)
 $lightBlue: rgb(146, 193, 255)
+$darkBlue: rgb(0, 103, 238)
 
 $controlPanelW: 20vw
 $cardW: (90vw - $controlPanelW)/6
 $cardH: 90vh/4
-$teamNameW: 40%
+$teamNameW: 50%
 $font: 'Rubik', sans-serif
-$softBorder: 3px
+$softBorder: 6px
 $boardW: 90vw
 $smallBoardW: 85vw
 $smallMarginW: 2vw
+$fontSize: 16px
 
 #root
   background-color: $lightBlue
@@ -21,25 +23,16 @@ $smallMarginW: 2vw
   display: flex
   flex-direction: row
   justify-content: space-between
-  height: 99vh
+  height: 100vh
   align-items: center
   margin: auto auto
 
 .board
   width: $boardW
-  height: 100%
+  height: 100vh
   display: flex
   flex-direction: column
   justify-content: space-evenly
-
-.screen
-  width: $smallBoardW
-  height: 100vmax
-  display: flex
-  flex-direction: row
-  flex-wrap: wrap
-  justify-content: center
-  align-items: center
 
 .row
   display: flex
@@ -69,39 +62,88 @@ $smallMarginW: 2vw
   align-items: center
   font-family: $font
   width: $controlPanelW
-  height: 100%
+  height: 100vh
 
-.teams
+.teamlist
   display: flex
   flex-direction: column
-  justify-content: space-evenly
+  justify-content: space-between
 
-.team, .teamsbtn
+.team
   display: flex
   flex-direction: row
   justify-content: space-between
   align-items: center
-
-.teamscore
-  margin: auto auto
-
-.teamname
-  margin-left: 1vw
+  margin: 1vh 1vw
 
 input
   width: $teamNameW
   color: $fontColor
   border-radius: $softBorder
   border: none
-  padding: 3px
+  padding: 6px
   align-text: center
 
+.score
+  margin: auto auto
+  font-size: 2rem
+
+.incdec
+  font-size: 2rem
+
+.add-remove-teams
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+
 .instructions
-  color: white
+  color: black
+  font-weight: bold
   text-align: center
 
 .controls
   display: flex
   flex-direction: column
-  justify-content: flex-start
+  justify-content: center
+  align-items: center
   background-color: $lightBlue
+  margin-bottom: 1vh
+  font-size: 2rem
+
+.add-remove-teams
+  span
+    margin: 0px 20px
+
+.screen
+  width: $smallBoardW
+  height: 100vh
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: center
+  align-items: center
+
+.deck
+  font-size: $fontSize * 3
+  width: auto
+  height: auto
+  margin: 1vw
+  border-radius: $softBorder
+
+button
+  background: $lightBlue
+  border: none
+  width: 2vw
+
+button:focus
+  outline: none
+
+button:hover
+  box-shadow: inset 0px 0px 2px 2px $darkBlue
+
+a
+  text-decoration: none
+
+.screen-change-btn
+  width: 100%
