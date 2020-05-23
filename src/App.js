@@ -5,8 +5,8 @@ import { Teams } from "./teams";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/screens";
 import { misc, fruits, animals, colors } from "./decks";
-import { HashRouter, Route } from "react-router-dom";
-import "./App.sass";
+import { BrowserRouter, Route } from "react-router-dom";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
@@ -18,14 +18,14 @@ class App extends React.Component {
       deckName: "misc",
       currentScreen: "game",
       teamCount: 4,
-      teams: Teams
+      teams: Teams,
     };
 
     this.deckChoices = [
+      { name: "color", deck: colors },
+      { name: "fruit", deck: fruits },
+      { name: "animal", deck: animals },
       { name: "misc", deck: misc },
-      { name: "colors", deck: colors },
-      { name: "fruits", deck: fruits },
-      { name: "animals", deck: animals }
     ];
 
     this.cardClick = this.cardClick.bind(this);
@@ -38,22 +38,22 @@ class App extends React.Component {
     this.updateTeamName = this.updateTeamName.bind(this);
   }
 
-  cardClick = props => {
+  cardClick = (props) => {
     let deck = this.state.deck.slice();
     deck[props].flipped = !deck[props].flipped;
     this.setState({
-      deck: deck
+      deck: deck,
     });
   };
 
-  updateBoard = props => {
+  updateBoard = (props) => {
     let deckName = this.state.deckName;
-    let deck = this.deckChoices.filter(choice => choice.name === deckName);
+    let deck = this.deckChoices.filter((choice) => choice.name === deckName);
     deck = deck[0].deck; // because of filter
     let boardShape = this.state.boardShape;
 
     let deckCopy = deck.slice(); //copy so you don't ruin the original
-    deckCopy.forEach(item => (item.flipped = false)); // reset flipped before display
+    deckCopy.forEach((item) => (item.flipped = false)); // reset flipped before display
     const pairLimit = (boardShape.x * boardShape.y) / 2; // set pair limit
 
     // choose (pair limit) random deck
@@ -65,7 +65,7 @@ class App extends React.Component {
     }
 
     // make pairs of the deck, slice copies refs... use map
-    const noRefCopy = newCards.map(item => {
+    const noRefCopy = newCards.map((item) => {
       return { ...item };
     });
     newCards = newCards.concat(noRefCopy);
@@ -83,20 +83,20 @@ class App extends React.Component {
       return {
         deck: randomOrder,
         deckName: deckName,
-        boardShape: boardShape
+        boardShape: boardShape,
       };
     });
   };
 
-  changeBoardShape = props => {
-    let newShape = boardShapes.filter(item => item.size === props);
+  changeBoardShape = (props) => {
+    let newShape = boardShapes.filter((item) => item.size === props);
     this.setState(() => {
       return { boardShape: newShape[0] };
     });
   };
 
-  changeVocab = props => {
-    let newDeck = this.deckChoices.filter(choice => choice.name === props);
+  changeVocab = (props) => {
+    let newDeck = this.deckChoices.filter((choice) => choice.name === props);
     this.setState(() => {
       return { deckName: newDeck[0].name };
     });
@@ -104,17 +104,17 @@ class App extends React.Component {
 
   changeScore = (props, team) => {
     let teamsCopy = this.state.teams;
-    teamsCopy.forEach(item => {
+    teamsCopy.forEach((item) => {
       if (item.name === team) {
         props === "plus" ? item.score++ : item.score--;
       }
     });
     this.setState({
-      teams: teamsCopy
+      teams: teamsCopy,
     });
   };
 
-  teamIncDec = props => {
+  teamIncDec = (props) => {
     let newCount;
     if (props === "plus") {
       if (this.state.teamCount >= 6) {
@@ -131,36 +131,36 @@ class App extends React.Component {
         newCount = this.state.teamCount - 1;
       }
     }
-    this.setState(state => {
+    this.setState((state) => {
       return { teamCount: newCount };
     });
   };
 
-  updateTeamName = props => {
+  updateTeamName = (props) => {
     // console.log("updateTeamName: ", team, name);
     console.log("update team name: ", props);
     // let teams = this.state.Teams;
     // teams.indexOf(team);
   };
 
-  changeScreen = props => {
+  changeScreen = (props) => {
     if (props === "/") {
       //return to game board screen
       this.updateBoard();
     }
     this.setState({
-      currentScreen: props
+      currentScreen: props,
     });
   };
 
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <div className="main">
           <Route
             exact
             path="/"
-            render={props => (
+            render={(props) => (
               <BoardGame
                 boardShape={this.state.boardShape}
                 handleClick={this.cardClick}
@@ -170,7 +170,7 @@ class App extends React.Component {
           />
           <Route
             path="/settings"
-            render={props => (
+            render={(props) => (
               <BoardShapeScreen
                 choices={boardShapes}
                 changeBoardShape={this.changeBoardShape}
@@ -179,7 +179,7 @@ class App extends React.Component {
           />
           <Route
             path="/decks"
-            render={props => (
+            render={(props) => (
               <VocabScreen
                 changeVocab={this.changeVocab}
                 choices={this.deckChoices}
@@ -194,7 +194,7 @@ class App extends React.Component {
             {...this.state}
           />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }

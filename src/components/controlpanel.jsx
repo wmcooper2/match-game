@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const ChangeScore = props => {
+const ChangeScore = (props) => {
   const { handleClick, team } = props;
   return (
     <React.Fragment>
@@ -15,7 +15,7 @@ const ChangeScore = props => {
   );
 };
 
-const Team = props => {
+const Team = (props) => {
   const { name, score, updateTeamName, changeScore } = props;
   return (
     <div className="team">
@@ -31,7 +31,7 @@ const Team = props => {
   );
 };
 
-const TeamsList = props => {
+const TeamsList = (props) => {
   const { teams, teamCount, updateTeamName } = props;
   let teamsInPlay = [];
   for (let i = 0; i < teamCount; i++) {
@@ -49,7 +49,7 @@ const TeamsList = props => {
   return <div className="teamlist">{teamsInPlay}</div>;
 };
 
-const AddRemoveTeam = props => {
+const AddRemoveTeam = (props) => {
   return (
     <div className="add-remove-teams">
       <button className="incdec" onClick={() => props.teamIncDec("minus")}>
@@ -63,12 +63,13 @@ const AddRemoveTeam = props => {
   );
 };
 
-const DecksBtn = props => {
+const DecksBtn = (props) => {
   const { changeScreen, currentScreen } = props;
   if (currentScreen === "decks") {
     return (
-      <button className="screen-change-btn" onClick={() => changeScreen("/")}>
-        <Link to="/">Game</Link>
+      <button className="screen-change-btn" onClick={() => changeScreen("/")}
+     >
+        <NavLink to="/">Game</NavLink>
       </button>
     );
   } else {
@@ -77,18 +78,18 @@ const DecksBtn = props => {
         className="screen-change-btn"
         onClick={() => changeScreen("decks")}
       >
-        <Link to="/decks">Vocab</Link>
+        <NavLink to="/decks">Vocab</NavLink>
       </button>
     );
   }
 };
 
-const SettingsBtn = props => {
+const SettingsBtn = (props) => {
   const { changeScreen, currentScreen } = props;
   if (currentScreen === "settings") {
     return (
       <button className="screen-change-btn" onClick={() => changeScreen("/")}>
-        <Link to="/">Game</Link>
+        <NavLink to="/">Game</NavLink>
       </button>
     );
   } else {
@@ -97,18 +98,17 @@ const SettingsBtn = props => {
         className="screen-change-btn"
         onClick={() => changeScreen("settings")}
       >
-        <Link to="settings">Cards</Link>
+        <NavLink to="settings">Cards</NavLink>
       </button>
     );
   }
 };
 
-const ControlPanel = props => {
+const ControlPanel = (props) => {
   const { updateTeamName } = props;
   return (
     <div className="controlpanel">
       <TeamsList {...props} updateTeamName={updateTeamName} />
-      {/* <div className="deckinplay">{deckName}</div> */}
       <div className="instructions">
         Choose a vocab set and how many cards before playing.
       </div>
