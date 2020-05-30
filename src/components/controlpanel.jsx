@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const ChangeScore = (props) => {
+const TeamScore = (props) => {
   const { handleClick, team, score } = props;
   return (
     <div className="scoreControl">
@@ -16,7 +16,7 @@ const ChangeScore = (props) => {
   );
 };
 
-const Team = (props) => {
+const TeamName = (props) => {
   const { name, updateTeamName } = props;
   return (
     <div className="team">
@@ -30,22 +30,21 @@ const Team = (props) => {
   );
 };
 
-const TeamsList = (props) => {
-  const { teams, teamCount, updateTeamName, changeScore, name } = props;
+const TeamList = (props) => {
+  const { teams, teamCount, updateTeamName, changeScore } = props;
   let teamsInPlay = [];
   for (let i = 0; i < teamCount; i++) {
     teamsInPlay.push(
-      <div className="aTeam">
-        <Team
-          key={i}
+      <div key={i} className="aTeam">
+        <TeamName
           name={teams[i].name}
           updateTeamName={updateTeamName}
           nameIndex={i}
           {...props}
         />
-        <ChangeScore
+        <TeamScore
           handleClick={changeScore}
-          team={name}
+          team={teams[i].name}
           score={teams[i].score}
         />
       </div>
@@ -73,7 +72,10 @@ const DecksBtn = (props) => {
   if (currentScreen === "decks") {
     return (
       <div className="screen-change-btn" onClick={() => changeScreen("/")}>
-        <NavLink style={{ textDecoration: "none", color: "black" }} to="/"> Game </NavLink>
+        <NavLink style={{ textDecoration: "none", color: "black" }} to="/">
+          {" "}
+          Game{" "}
+        </NavLink>
       </div>
     );
   } else {
@@ -115,7 +117,7 @@ const ControlPanel = (props) => {
   const { updateTeamName } = props;
   return (
     <div className="controlpanel">
-      <TeamsList {...props} updateTeamName={updateTeamName} />
+      <TeamList {...props} updateTeamName={updateTeamName} />
       <div className="controls">
         <AddRemoveTeam {...props} />
         <DecksBtn {...props} />

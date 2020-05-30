@@ -3,6 +3,7 @@
 @import "controls.css";
 @import "cards.css";
 @import "smallscreens.css";
+@import "mediumscreens.css";
 
 :root {
   --fontColor: rgb(0, 0, 0);
@@ -11,14 +12,14 @@
   --lightBlue: rgb(146, 193, 255);
   --darkBlue: rgb(0, 103, 238);
   --controlPanelW: 20vw;
-  --teamNameW: 50%;
+  --teamNameW: 90%;
   --softBorder: 6px;
   --boardW: 90vw;
   --smallBoardW: 85vw;
   --smallMarginW: 2vw;
   --font-size: 5vw;
-  --font-family: "Comic Sans MS", "Comic Sans", "Rubik", "Tahoma", "Times New Roman",
-    "Arial";
+  --font-family: "Comic Sans MS", "Comic Sans", "Rubik", "Tahoma",
+    "Times New Roman", "Arial";
   background-color: var(--lightBlue);
 }
 
@@ -26,7 +27,8 @@
   display: flex;
   flex-direction: column;
   background-color: var(--lightBlue);
-  height: 100vh;
+  /* height: 100vh; */
+  justify-content: space-between;
   /* width: 100%; */
   overflow-y: hidden;
   overflow-x: hidden;

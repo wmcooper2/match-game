@@ -118,8 +118,8 @@ class App extends React.Component {
   teamIncDec = (props) => {
     let newCount;
     if (props === "plus") {
-      if (this.state.teamCount >= 6) {
-        newCount = 6;
+      if (this.state.teamCount >= 4) {
+        newCount = 4;
       } else if (this.state.teamCount < 2) {
         newCount = 2;
       } else {
@@ -187,14 +187,14 @@ class App extends React.Component {
               />
             )}
           />
-          <ControlPanel
-            changeScore={this.changeScore}
-            changeScreen={this.changeScreen}
-            teamIncDec={this.teamIncDec}
-            updateTeamName={this.updateTeamName}
-            {...this.state}
-          />
         </div>
+        <ControlPanel
+          changeScore={this.changeScore}
+          changeScreen={this.changeScreen}
+          teamIncDec={this.teamIncDec}
+          updateTeamName={this.updateTeamName}
+          {...this.state}
+        />
       </HashRouter>
     );
   }
