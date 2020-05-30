@@ -2,10 +2,8 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  /* width: var(--boardW); */
   width: 100%;
   background-color: var(--lightBlue);
-  height: 100vh;
 }
 
 .boardTwo-eight {

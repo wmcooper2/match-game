@@ -1,9 +1,9 @@
 import React from "react";
 
-const BoardShapeScreen = props => {
+const BoardShapeScreen = (props) => {
   const { changeBoardShape, choices } = props;
   let shapes = [];
-  choices.forEach(choice => {
+  choices.forEach((choice) => {
     shapes.push(
       <button
         key={choice.size}
@@ -15,13 +15,13 @@ const BoardShapeScreen = props => {
     );
   });
 
-  return <div className="screen"> {shapes.reverse()} </div>;
+  return <div className="options"> {shapes.reverse()} </div>;
 };
 
-const VocabScreen = props => {
+const VocabScreen = (props) => {
   const { changeVocab, choices } = props;
   let decks = [];
-  choices.forEach(choice =>
+  choices.forEach((choice) =>
     decks.push(
       <button
         key={choice.name}
@@ -33,7 +33,7 @@ const VocabScreen = props => {
     )
   );
 
-  return <div className="screen"> {decks} </div>;
+  return <div className="options"> {decks} </div>;
 };
 
 export { VocabScreen, BoardShapeScreen };

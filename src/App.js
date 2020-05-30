@@ -162,9 +162,11 @@ class App extends React.Component {
             exact
             path="/"
             render={(props) => (
-
-              // <BoardGame boardShape={this.state.boardShape} handleClick={this.cardClick} deck={this.state.deck} />
-              <BoardGame2 boardShape={this.state.boardShape} handleClick={this.cardClick} deck={this.state.deck} />
+              <BoardGame2
+                boardShape={this.state.boardShape}
+                handleClick={this.cardClick}
+                deck={this.state.deck}
+              />
             )}
           />
 

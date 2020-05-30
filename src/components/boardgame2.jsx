@@ -4,22 +4,18 @@ import ReactCardFlip from "react-card-flip";
 const FlipCardFront = (props) => {
   const { cardID, handleClick } = props;
   return (
-    <div className="card card-front" onClick={() => handleClick(cardID)}>
-      {cardID + 1}
-    </div>
+    <img
+      src="https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/front.jpg"
+      alt="front"
+      onClick={() => handleClick(cardID)}
+    ></img>
   );
 };
 
 const FlipCardBack = (props) => {
   const { card, cardID, handleClick } = props;
   return (
-    <img
-      onClick={() => handleClick(cardID)}
-      className="card card-back"
-      src={card.image}
-      alt="card"
-      style={{ border: "none" }}
-    ></img>
+    <img src={card.image} alt="card" onClick={() => handleClick(cardID)}></img>
   );
 };
 
@@ -63,19 +59,14 @@ const Card = (props) => {
 };
 
 const BoardGame = (props) => {
-  console.log("Board Props: ", props);
   const { boardShape, deck } = props;
   let cards = [];
   for (let i = 0; i < boardShape.size; i++) {
     cards.push(<Card key={i} card={deck[i]} cardID={i} {...props} />);
   }
-  console.log("Cards: ", cards);
-  let board = boardClass(boardShape);
-  console.log("boardClass: ", board);
-  board = `board boardTwo-${board}`;
 
-  //   return <div className="boardTwo-eight">{cards}</div>;
-  //   return <div className={`boardTwo-${board}`}>{cards}</div>;
+  let board = boardClass(boardShape);
+  board = `board boardTwo-${board}`;
   return <div className={board}>{cards}</div>;
 };
 

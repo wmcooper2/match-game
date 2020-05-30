@@ -10,8 +10,6 @@
   --lightBlue: rgb(146, 193, 255);
   --darkBlue: rgb(0, 103, 238);
   --controlPanelW: 20vw;
-  /* --cardW: calc((90vw - var(--controlPanelW)) / 6); */
-  /* --cardH: calc(90vh / 4); */
   --teamNameW: 50%;
   --softBorder: 6px;
   --boardW: 90vw;
@@ -20,9 +18,12 @@
   font-size: 1rem;
   --Font: "Comic Sans MS", "Comic Sans", "Rubik", "Tahoma", "Times New Roman",
     "Arial";
+  background-color: var(--lightBlue);
 }
 
-:root {
+body,
+.App,
+.main {
   background-color: var(--lightBlue);
 }
 
@@ -35,27 +36,18 @@
   margin: auto auto;
 }
 
-.row {
-  display: flex;
-  justify-content: space-around;
-}
-
-.screen {
-  width: var(--smallBoardW);
-  background-color: var(--lightBlue);
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+div.options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
 }
 
 .deck {
-  font-size: 3rem;
-  /* width: var(--cardW); */
-  /* height: var(--cardH); */
-  margin: 1vw;
-  border-radius: var(--softBorder);
+  justify-self: center;
+  align-self: center;
+  font-size: 4vw;
+  width: 100%;
   font-family: var(--Font);
 }

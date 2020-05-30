@@ -1,24 +1,10 @@
 img {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 90%;
-  width: 90%;
+  margin: auto auto;
+  height: 99%;
+  width: 99%;
 }
 
-.card {
-  display: grid;
-  border-radius: 1rem;
-  transition-duration: 200ms;
-}
-
-.card:hover {
-  transform: scale(0.95);
-}
-
-.card-front {
-  font-family: var(--Font);
-  text-align: center;
-  height: auto;
-  font-size: 3em;
+div.react-card-flip {
+  height: 100%;
 }
