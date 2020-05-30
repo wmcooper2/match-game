@@ -1,11 +1,12 @@
 import React from "react";
 import BoardGame from "./components/boardgame";
+import BoardGame2 from "./components/boardgame2";
 import ControlPanel from "./components/controlpanel";
 import { Teams } from "./teams";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/screens";
 import { misc, fruits, animals, colors } from "./decks";
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -138,9 +139,9 @@ class App extends React.Component {
 
   updateTeamName = (props) => {
     // console.log("updateTeamName: ", team, name);
-    console.log("update team name: ", props);
+    // console.log("update team name: ", props);
     // let teams = this.state.Teams;
-    // teams.indexOf(team);
+    // teams.indexOf(props);
   };
 
   changeScreen = (props) => {
@@ -155,19 +156,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div className="main">
           <Route
             exact
             path="/"
             render={(props) => (
-              <BoardGame
-                boardShape={this.state.boardShape}
-                handleClick={this.cardClick}
-                deck={this.state.deck}
-              />
+
+              // <BoardGame boardShape={this.state.boardShape} handleClick={this.cardClick} deck={this.state.deck} />
+              <BoardGame2 boardShape={this.state.boardShape} handleClick={this.cardClick} deck={this.state.deck} />
             )}
           />
+
           <Route
             path="/settings"
             render={(props) => (
@@ -194,7 +194,7 @@ class App extends React.Component {
             {...this.state}
           />
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

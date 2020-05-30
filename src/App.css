@@ -1,14 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+@import "boards.css";
+@import "controls.css";
+@import "cards.css";
+
 :root {
   --fontColor: rgb(0, 0, 0);
   --controlPanelColor: rgba(22, 122, 246, 1);
   --lightGreen: rgba(151, 250, 150, 1);
   --lightBlue: rgb(146, 193, 255);
   --darkBlue: rgb(0, 103, 238);
-
   --controlPanelW: 20vw;
-  --cardW: calc((90vw - var(--controlPanelW)) / 6);
-  --cardH: calc(90vh / 4);
+  /* --cardW: calc((90vw - var(--controlPanelW)) / 6); */
+  /* --cardH: calc(90vh / 4); */
   --teamNameW: 50%;
   --softBorder: 6px;
   --boardW: 90vw;
@@ -32,107 +35,9 @@
   margin: auto auto;
 }
 
-.board {
-  width: var(--boardW);
-  background-color: var(--lightBlue);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
 .row {
   display: flex;
   justify-content: space-around;
-}
-
-.card {
-  border-radius: 3px;
-  width: var(--cardW);
-  height: var(--cardH);
-  box-shadow: inset 0px 0px 1px 1px black;
-}
-
-.card:hover {
-  box-shadow: 0px 0px 2px 2px;
-}
-
-.card-front {
-  font-family: var(--Font);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3em;
-}
-
-.controlpanel {
-  display: flex;
-  background-color: var(--lightBlue);
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--Font);
-  width: var(--controlPanelW);
-  height: 100vh;
-}
-
-.teamlist {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.team {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1vh 1vw;
-}
-
-input {
-  width: var(--teamNameW);
-  color: var(--fontColor);
-  border-radius: var(--softBorder);
-  border: none;
-  padding: 6px;
-  text-align: center;
-}
-
-.score {
-  margin: auto auto;
-  font-size: 2rem;
-}
-
-.incdec {
-  font-size: 2rem;
-}
-
-.add-remove-teams {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.instructions {
-  color: black;
-  font-weight: bold;
-  text-align: center;
-}
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--lightBlue);
-  margin-bottom: 1vh;
-  font-size: 2rem;
-}
-
-.add-remove-teams span {
-  margin: 0px 20px;
 }
 
 .screen {
@@ -148,27 +53,9 @@ input {
 
 .deck {
   font-size: 3rem;
-  width: var(--cardW);
-  height: var(--cardH);
+  /* width: var(--cardW); */
+  /* height: var(--cardH); */
   margin: 1vw;
   border-radius: var(--softBorder);
   font-family: var(--Font);
-}
-
-button {
-  background: var(--lightBlue);
-  border: none;
-  width: 2vw;
-}
-
-button:focus {
-  outline: none;
-}
-
-button:hover {
-  box-shadow: inset 0px 0px 2px 2px var(--darkBlue);
-}
-
-.screen-change-btn {
-  width: 100%;
 }

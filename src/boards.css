@@ -1,0 +1,44 @@
+.board {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  /* width: var(--boardW); */
+  width: 100%;
+  background-color: var(--lightBlue);
+  height: 100vh;
+}
+
+.boardTwo-eight {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.boardTwo-ten {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.boardTwo-twelve {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.boardTwo-sixteen {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.boardTwo-eighteen {
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.boardTwo-twenty {
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.boardTwo-twentyfour {
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
