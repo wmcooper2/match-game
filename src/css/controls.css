@@ -1,0 +1,115 @@
+button {
+  background: var(--lightBlue);
+  border: none;
+  width: 2vw;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  border-radius: 6px;
+  box-shadow: inset 0px 0px 2px 2px var(--darkBlue);
+  outline: none;
+}
+
+.add-remove-teams {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2vw;
+}
+
+.add-remove-teams button {
+  font-size: 2vw;
+}
+
+.controlpanel {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--lightBlue);
+  /* background-color: green; */
+  font-family: var(--font-family);
+  /* width: 100vw; */
+  /* height: auto; */
+  /* margin-top: 0; */
+  margin: 0vh 5vw;
+}
+
+.controls {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--lightBlue);
+  /* margin-bottom: 1vh; */
+  font-size: var(--font-size);
+}
+
+.incdec {
+  font-size: var(--font-size);
+  padding: 0;
+}
+
+.indec:hover {
+  cursor: pointer;
+}
+
+input {
+  width: var(--teamNameW);
+  color: var(--fontColor);
+  border-radius: var(--softBorder);
+  border: none;
+  padding: 6px;
+  text-align: center;
+  max-width: 16vw;
+  font-size: 1rem;
+  font-family: var(--font-family);
+}
+
+.instructions {
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+
+.screen-change-btn {
+  color: black;
+  /* width: 100%; */
+  width: auto;
+  padding: 0;
+  /* height: 50%; */
+  font-size: 2vw;
+}
+
+.screen-change-btn:hover {
+  outline: none;
+}
+
+.score {
+  /* margin: auto auto; */
+  font-size: var(--font-size);
+}
+
+.scoreControl {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* margin: 1vw; */
+}
+
+.teamlist {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* margin: 1vh 1vw; */
+}

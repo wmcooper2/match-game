@@ -4,11 +4,11 @@ import BoardGame2 from "./components/boardgame2";
 import ControlPanel from "./components/controlpanel";
 import { Teams } from "./teams";
 import { boardShapes, defaultShape } from "./boardshapes";
-import { BoardShapeScreen, VocabScreen } from "./components/screens";
+import { BoardShapeScreen, VocabScreen } from "./components/optionScreens";
 import { misc, fruits, animals, colors } from "./decks";
 import { HashRouter, Route } from "react-router-dom";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/App.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -169,9 +169,8 @@ class App extends React.Component {
               />
             )}
           />
-
           <Route
-            path="/settings"
+            path="/cards"
             render={(props) => (
               <BoardShapeScreen
                 choices={boardShapes}
@@ -180,7 +179,7 @@ class App extends React.Component {
             )}
           />
           <Route
-            path="/decks"
+            path="/vocab"
             render={(props) => (
               <VocabScreen
                 changeVocab={this.changeVocab}

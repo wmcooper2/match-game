@@ -51,10 +51,12 @@ const boardClass = (board) => {
 const Card = (props) => {
   const { card } = props;
   return (
-    <ReactCardFlip isFlipped={card.flipped} flipDirection="horizontal">
-      <FlipCardFront {...props} />
-      <FlipCardBack {...props} />
-    </ReactCardFlip>
+    <div className="card">
+      <ReactCardFlip isFlipped={card.flipped} flipDirection="horizontal">
+        <FlipCardFront {...props} />
+        <FlipCardBack {...props} />
+      </ReactCardFlip>
+    </div>
   );
 };
 
@@ -66,7 +68,7 @@ const BoardGame = (props) => {
   }
 
   let board = boardClass(boardShape);
-  board = `board boardTwo-${board}`;
+  board = `board board-${board}`;
   return <div className={board}>{cards}</div>;
 };
 

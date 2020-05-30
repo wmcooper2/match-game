@@ -2,6 +2,7 @@
 @import "boards.css";
 @import "controls.css";
 @import "cards.css";
+@import "smallscreens.css";
 
 :root {
   --fontColor: rgb(0, 0, 0);
@@ -15,28 +16,23 @@
   --boardW: 90vw;
   --smallBoardW: 85vw;
   --smallMarginW: 2vw;
-  font-size: 1rem;
-  --Font: "Comic Sans MS", "Comic Sans", "Rubik", "Tahoma", "Times New Roman",
+  --font-size: 5vw;
+  --font-family: "Comic Sans MS", "Comic Sans", "Rubik", "Tahoma", "Times New Roman",
     "Arial";
-  background-color: var(--lightBlue);
-}
-
-body,
-.App,
-.main {
   background-color: var(--lightBlue);
 }
 
 .main {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  background-color: var(--lightBlue);
   height: 100vh;
-  align-items: center;
-  margin: auto auto;
+  /* width: 100%; */
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
-div.options {
+.options {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -44,10 +40,10 @@ div.options {
   height: 100%;
 }
 
-.deck {
+.option {
   justify-self: center;
   align-self: center;
-  font-size: 4vw;
+  font-size: var(--font-size);
   width: 100%;
-  font-family: var(--Font);
+  font-family: var(--font-family);
 }

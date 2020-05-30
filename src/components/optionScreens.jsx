@@ -2,12 +2,12 @@ import React from "react";
 
 const BoardShapeScreen = (props) => {
   const { changeBoardShape, choices } = props;
-  let shapes = [];
+  let options = [];
   choices.forEach((choice) => {
-    shapes.push(
+    options.push(
       <button
         key={choice.size}
-        className="deck"
+        className="option"
         onClick={() => changeBoardShape(choice.size)}
       >
         {choice.size}
@@ -15,17 +15,17 @@ const BoardShapeScreen = (props) => {
     );
   });
 
-  return <div className="options"> {shapes.reverse()} </div>;
+  return <div className="options"> {options.reverse()} </div>;
 };
 
 const VocabScreen = (props) => {
   const { changeVocab, choices } = props;
-  let decks = [];
+  let options = [];
   choices.forEach((choice) =>
-    decks.push(
+    options.push(
       <button
         key={choice.name}
-        className="deck"
+        className="option"
         onClick={() => changeVocab(choice.name)}
       >
         {choice.name}
@@ -33,7 +33,7 @@ const VocabScreen = (props) => {
     )
   );
 
-  return <div className="options"> {decks} </div>;
+  return <div className="options"> {options} </div>;
 };
 
 export { VocabScreen, BoardShapeScreen };
