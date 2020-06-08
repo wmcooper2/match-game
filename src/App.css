@@ -15,25 +15,17 @@
   --boardW: 90vw;
   --smallBoardW: 85vw;
   --smallMarginW: 2vw;
+  --background-color: white;
   font-size: 1rem;
   --Font: "Comic Sans MS", "Comic Sans", "Rubik", "Tahoma", "Times New Roman",
     "Arial";
-  background-color: var(--lightBlue);
-}
-
-body,
-.App,
-.main {
-  background-color: var(--lightBlue);
 }
 
 .main {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 100vh;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  margin: auto auto;
 }
 
 div.options {

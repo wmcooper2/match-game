@@ -1,7 +1,9 @@
 import React from "react";
-import BoardGame from "./components/boardgame";
+// import BoardGame from "./components/boardgame";
 import BoardGame2 from "./components/boardgame2";
-import ControlPanel from "./components/controlpanel";
+// import ControlPanel from "./components/controlpanel";
+import SettingsBtn from "./components/settingsBtn";
+import DecksBtn from "./components/decksBtn";
 import { Teams } from "./teams";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/screens";
@@ -158,6 +160,16 @@ class App extends React.Component {
     return (
       <HashRouter>
         <div className="main">
+        <div className="control-panel2">
+          <DecksBtn
+            currentScreen={this.state.currentScreen}
+            changeScreen={this.changeScreen}
+          />
+          <SettingsBtn
+            currentScreen={this.state.currentScreen}
+            changeScreen={this.changeScreen}
+          />
+        </div>
           <Route
             exact
             path="/"
@@ -179,6 +191,7 @@ class App extends React.Component {
               />
             )}
           />
+
           <Route
             path="/decks"
             render={(props) => (
@@ -188,14 +201,8 @@ class App extends React.Component {
               />
             )}
           />
-          <ControlPanel
-            changeScore={this.changeScore}
-            changeScreen={this.changeScreen}
-            teamIncDec={this.teamIncDec}
-            updateTeamName={this.updateTeamName}
-            {...this.state}
-          />
         </div>
+
       </HashRouter>
     );
   }
