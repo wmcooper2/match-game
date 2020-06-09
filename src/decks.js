@@ -75,7 +75,85 @@ const colors = [
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/rainbow.jpg",
     flipped: false,
   },
+
+  {
+    name: "red",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/red.jpg",
+    flipped: false,
+  },
+
+  {
+    name: "color-orange",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/color-orange.jpg",
+    flipped: false,
+  },
+
+  {
+    name: "yellow",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/yellow.jpg",
+    flipped: false,
+  },
+
+  {
+    name: "green",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/green.jpg",
+    flipped: false,
+  },
+
+  {
+    name: "blue",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/blue.jpg",
+    flipped: false,
+  },
+
+  {
+    name: "purple",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/purple.jpg",
+    flipped: false,
+  },
+
+  {
+    name: "brown",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/brown.jpg",
+    flipped: false,
+  },
+
+  {
+    name: "black",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/black.jpg:",
+    flipped: false,
+  },
+
+  {
+    name: "pink",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/pink.jpg",
+    flipped: false,
+  },
+
+  {
+    name: "white",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/white.jpg",
+    flipped: false,
+  },
+
+  {
+    name: "rainbow",
+    image:
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/rainbow.jpg",
+    flipped: false,
+  },
 ];
+
 const fruits = [
   {
     name: "apple",
@@ -185,12 +263,14 @@ const fruits = [
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/plum.png",
     flipped: false,
   },
+
   {
     name: "raspberry",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/raspberry.jpg",
     flipped: false,
   },
+
   {
     name: "strawberry",
     image:
@@ -317,144 +397,168 @@ const misc = [
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/pen.jpg",
     flipped: false,
   },
+
   {
     name: "David",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/David.jpg",
     flipped: false,
   },
+
   {
     name: "dog",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/dog.jpg",
     flipped: false,
   },
+
   {
     name: "bird",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/bird.jpg",
     flipped: false,
   },
+
   {
     name: "rat",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/rat.jpg",
     flipped: false,
   },
+
   {
     name: "duck",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/duck.jpg",
     flipped: false,
   },
+
   {
     name: "cheetah",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/cheetah.jpg",
     flipped: false,
   },
+
   {
     name: "elephant",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/elephant.png",
     flipped: false,
   },
+
   {
     name: "fish",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/fish.png",
     flipped: false,
   },
+
   {
     name: "horse",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/horse.jpg",
     flipped: false,
   },
+
   {
     name: "jellyfish",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/jellyfish.jpg",
     flipped: false,
   },
+
   {
     name: "shark",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/shark.jpg",
     flipped: false,
   },
+
   {
     name: "lion",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/lion.jpg",
     flipped: false,
   },
+
   {
     name: "zebra",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/zebra.jpg",
     flipped: false,
   },
+
   {
     name: "raccoon",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/raccoon.jpg",
     flipped: false,
   },
+
   {
     name: "sparrow",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/sparrow.jpg",
     flipped: false,
   },
+
   {
     name: "pikachu",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/pikachu.jpg",
     flipped: false,
   },
+
   {
     name: "donut",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/donut.jpg",
     flipped: false,
   },
+
   {
     name: "cheese",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/cheese.jpg",
     flipped: false,
   },
+
   {
     name: "apple",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/apple.jpg",
     flipped: false,
   },
+
   {
     name: "yes",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/yes.jpg",
     flipped: false,
   },
+
   {
     name: "book",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/book.png",
     flipped: false,
   },
+
   {
     name: "art",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/art.jpg",
     flipped: false,
   },
+
   {
     name: "pumpkin",
     image:
       "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/pumpkin.png",
     flipped: false,
   },
+
   {
     name: "youtube",
     image:

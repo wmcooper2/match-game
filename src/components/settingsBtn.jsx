@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
 const SettingsBtn = (props) => {
@@ -13,6 +14,7 @@ const SettingsBtn = (props) => {
             textDecoration: "none",
             fontSize: "2rem",
             fontFamily: "var(--Font)",
+            margin: "1rem 1rem",
           }}
         >
           Game
@@ -32,6 +34,7 @@ const SettingsBtn = (props) => {
             textDecoration: "none",
             fontSize: "2rem",
             fontFamily: "var(--Font)",
+            margin: "1rem 1rem",
           }}
         >
           Cards
@@ -39,6 +42,16 @@ const SettingsBtn = (props) => {
       </button>
     );
   }
+};
+
+SettingsBtn.propTypes = {
+  changeScreen: PropTypes.func,
+  currentScreen: PropTypes.string,
+};
+
+SettingsBtn.defaultTypes = {
+  changeScreen: console.log("Clicked <SettingsBtn />"),
+  currentScreen: "Default Screen",
 };
 
 export default SettingsBtn;

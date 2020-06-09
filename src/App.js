@@ -6,9 +6,11 @@ import SettingsBtn from "./components/settingsBtn";
 import DecksBtn from "./components/decksBtn";
 import { Teams } from "./teams";
 import { boardShapes, defaultShape } from "./boardshapes";
+// import { boardShapes } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/screens";
 import { misc, fruits, animals, colors } from "./decks";
 import { HashRouter, Route } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -160,16 +162,16 @@ class App extends React.Component {
     return (
       <HashRouter>
         <div className="main">
-        <div className="control-panel2">
-          <DecksBtn
-            currentScreen={this.state.currentScreen}
-            changeScreen={this.changeScreen}
-          />
-          <SettingsBtn
-            currentScreen={this.state.currentScreen}
-            changeScreen={this.changeScreen}
-          />
-        </div>
+          <div className="control-panel2">
+            <DecksBtn
+              currentScreen={this.state.currentScreen}
+              changeScreen={this.changeScreen}
+            />
+            <SettingsBtn
+              currentScreen={this.state.currentScreen}
+              changeScreen={this.changeScreen}
+            />
+          </div>
           <Route
             exact
             path="/"
@@ -202,10 +204,35 @@ class App extends React.Component {
             )}
           />
         </div>
-
       </HashRouter>
     );
   }
 }
+
+App.propTypes = {
+  boardShape: PropTypes.object,
+  deck: PropTypes.array,
+  deckName: PropTypes.string,
+  currentScreen: PropTypes.string,
+  teamCount: PropTypes.number,
+  teams: PropTypes.array,
+};
+
+// const defaultShape =
+App.defaultProps = {
+  boardShape: { size: 8, x: 4, y: 2 },
+  deck: [
+    {
+      name: "youtube",
+      image:
+        "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/youtube.jpg",
+      flipped: false,
+    },
+  ],
+  deckName: "Default deckName",
+  currentScreen: "Default screen",
+  teamCount: 1,
+  teams: [{ name: "Team A", score: 0 }],
+};
 
 export default App;

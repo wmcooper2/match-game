@@ -50,6 +50,7 @@ const boardClass = (board) => {
 
 const Card = (props) => {
   const { card } = props;
+  console.log("Card: ", card);
   return (
     <ReactCardFlip isFlipped={card.flipped} flipDirection="horizontal">
       <FlipCardFront {...props} />
@@ -60,7 +61,9 @@ const Card = (props) => {
 
 const BoardGame = (props) => {
   const { boardShape, deck } = props;
+  // console.log("BoardGame: ", boardShape);
   let cards = [];
+  console.log("BoardGame: ", boardShape.size);
   for (let i = 0; i < boardShape.size; i++) {
     cards.push(<Card key={i} card={deck[i]} cardID={i} {...props} />);
   }

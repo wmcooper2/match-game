@@ -12,13 +12,9 @@ const DecksBtn = (props) => {
             color: "black",
             textDecoration: "none",
             fontSize: "2rem",
-
             fontFamily: "var(--Font)",
+            margin: "1rem 1rem",
           }}
-          // activeStyle={{
-          // fontWeight: "bold",
-          // color: "red",
-          // }}
         >
           Game
         </NavLink>
@@ -37,6 +33,7 @@ const DecksBtn = (props) => {
             textDecoration: "none",
             fontSize: "2rem",
             fontFamily: "var(--Font)",
+            margin: "1rem 1rem",
           }}
         >
           Vocabulary

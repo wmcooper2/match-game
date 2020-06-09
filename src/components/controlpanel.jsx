@@ -1,34 +1,59 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
 const ChangeScore = (props) => {
-  const { handleClick, team } = props;
+  const { handleClick, teamName } = props;
   return (
     <React.Fragment>
-      <button className="incdec" onClick={() => handleClick("minus", team)}>
+      <button className="incdec" onClick={() => handleClick("minus", teamName)}>
         -
       </button>
-      <button className="incdec" onClick={() => handleClick("plus", team)}>
+      <button className="incdec" onClick={() => handleClick("plus", teamName)}>
         +
       </button>
     </React.Fragment>
   );
 };
 
+ChangeScore.propTypes = {
+  handleClick: PropTypes.func,
+  team: PropTypes.string,
+};
+
+ChangeScore.defaultProps = {
+  handleClick: console.log("Clicked <ChangeScore />."),
+  team: "Default team in <ChangeScore />",
+};
+
 const Team = (props) => {
-  const { name, score, updateTeamName, changeScore } = props;
+  const { teamName, score, updateTeamName, changeScore } = props;
   return (
     <div className="team">
       <input
         type="text"
         className="name"
-        placeholder={name}
-        onChange={() => updateTeamName(name)}
+        placeholder={teamName}
+        onChange={() => updateTeamName(teamName)}
       ></input>
       <span className="score">{score}</span>
-      <ChangeScore handleClick={changeScore} team={name} />
+      <ChangeScore handleClick={changeScore} teamName={teamName} />
     </div>
   );
+};
+
+Team.propTypes = {
+  teamName: PropTypes.string,
+  score: PropTypes.string,
+  updateTeamName: PropTypes.func,
+  changeScore: PropTypes.func,
+};
+
+Team.defaultProps = {
+  teamName: "Default teamName in <Team />",
+  score: "Default score in <Team />",
+  updateTeamName: console.log("Clicked updateTeamName(), <Team />"),
+  changeScore: console.log("Clicked updateTeamName(), <Team />"),
 };
 
 const TeamsList = (props) => {
@@ -38,7 +63,7 @@ const TeamsList = (props) => {
     teamsInPlay.push(
       <Team
         key={i}
-        name={teams[i].name}
+        teamName={teams[i].name}
         score={teams[i].score}
         updateTeamName={updateTeamName}
         nameIndex={i}
@@ -49,26 +74,46 @@ const TeamsList = (props) => {
   return <div className="teamlist">{teamsInPlay}</div>;
 };
 
+TeamsList.propTypes = {
+  teams: PropTypes.array,
+  teamCount: PropTypes.number,
+  updateTeamName: PropTypes.func,
+};
+
+TeamsList.defaultProps = {
+  teams: [],
+  teamCount: 4,
+  updateTeamName: console.log("Clicked, <TeamsList />"),
+};
+
 const AddRemoveTeam = (props) => {
+  const { teamIncDec } = props;
   return (
     <div className="add-remove-teams">
-      <button className="incdec" onClick={() => props.teamIncDec("minus")}>
+      <button className="incdec" onClick={() => teamIncDec("minus")}>
         -
       </button>
       <span>Teams</span>
-      <button className="incdec" onClick={() => props.teamIncDec("plus")}>
+      <button className="incdec" onClick={() => teamIncDec("plus")}>
         +
       </button>
     </div>
   );
 };
 
+AddRemoveTeam.propTypes = {
+  teamIncDec: PropTypes.func,
+};
+
+AddRemoveTeam.defaultProps = {
+  teamIncDec: console.log("Clicked, <AddRemoveTeams />"),
+};
+
 const DecksBtn = (props) => {
   const { changeScreen, currentScreen } = props;
   if (currentScreen === "decks") {
     return (
-      <button className="screen-change-btn" onClick={() => changeScreen("/")}
-     >
+      <button className="screen-change-btn" onClick={() => changeScreen("/")}>
         <NavLink to="/">Game</NavLink>
       </button>
     );
@@ -82,6 +127,16 @@ const DecksBtn = (props) => {
       </button>
     );
   }
+};
+
+DecksBtn.propTypes = {
+  changeScreen: PropTypes.func,
+  currentScreen: PropTypes.func,
+};
+
+DecksBtn.defaultProps = {
+  changeScreen: console.log("Clicked <DecksBtn />"),
+  currentScreen: console.log("Clicked <DecksBtn />"),
 };
 
 const SettingsBtn = (props) => {
@@ -104,6 +159,16 @@ const SettingsBtn = (props) => {
   }
 };
 
+SettingsBtn.propTypes = {
+  changeScreen: PropTypes.func,
+  currentScreen: PropTypes.func,
+};
+
+SettingsBtn.defaultProps = {
+  changeScreen: console.log("Clicked <DecksBtn />"),
+  currentScreen: console.log("Clicked <DecksBtn />"),
+};
+
 const ControlPanel = (props) => {
   const { updateTeamName } = props;
   return (
@@ -119,6 +184,14 @@ const ControlPanel = (props) => {
       </div>
     </div>
   );
+};
+
+ControlPanel.propTypes = {
+  updateTeamName: PropTypes.func,
+};
+
+ControlPanel.defaultProps = {
+  updateTeamName: console.log("Clicked <ControlPanel />"),
 };
 
 export default ControlPanel;
