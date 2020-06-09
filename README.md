@@ -23,7 +23,6 @@ To have a match game where I can control the images and vocabulary used in the c
 * The teams that I had originally added to the first version proved to just be a time waster with students. It's best not to give them too many choices because they (being students) will find every opportunity to not stay on track.
 * Bootstrap was proving to be really annoying in this project. I ended up having to put stylings directly into the React components to get the effects I wanted.
 * The original CSS coloring scheme was also something that "took away" from the intent of the project. The point is to have a _simple_ way to practice vocabulary in class (that I controlled completely from the images to the layout, etc).
-* I introduced a bug into it (June 8th, 2020) where the card selection will cause the app to crash if you select a number greter than the available number of cards in the decks. I will work on this later...time for bed.
 
 
 ## More Information
