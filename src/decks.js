@@ -128,7 +128,7 @@ const colors = [
   {
     name: "black",
     image:
-      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/black.jpg:",
+      "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/black.jpg"
     flipped: false,
   },
 
