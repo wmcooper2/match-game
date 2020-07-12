@@ -1,82 +1,121 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
-const TeamScore = (props) => {
-  const { handleClick, team, score } = props;
+const ChangeScore = (props) => {
+  const { handleClick, teamName } = props;
   return (
-    <div className="scoreControl">
-      <div className="incdec" onClick={() => handleClick("minus", team)}>
+    <div>
+      <button className="incdec" onClick={() => handleClick("minus", teamName)}>
         -
-      </div>
-      <span className="score">{score}</span>
-      <div className="incdec" onClick={() => handleClick("plus", team)}>
+      </button>
+      <button className="incdec" onClick={() => handleClick("plus", teamName)}>
         +
-      </div>
+      </button>
     </div>
   );
 };
 
-const TeamName = (props) => {
-  const { name, updateTeamName } = props;
+ChangeScore.propTypes = {
+  handleClick: PropTypes.func,
+  team: PropTypes.string,
+};
+
+ChangeScore.defaultProps = {
+  handleClick: console.log("Clicked <ChangeScore />."),
+  team: "Default team in <ChangeScore />",
+};
+
+const Team = (props) => {
+  const { teamName, score, updateTeamName, changeScore } = props;
   return (
     <div className="team">
       <input
         type="text"
         className="name"
-        placeholder={name}
-        onChange={() => updateTeamName(name)}
+        placeholder={teamName}
+        onChange={() => updateTeamName(teamName)}
       ></input>
+      <span className="score">{score}</span>
+      <ChangeScore handleClick={changeScore} teamName={teamName} />
     </div>
   );
 };
 
-const TeamList = (props) => {
-  const { teams, teamCount, updateTeamName, changeScore } = props;
+Team.propTypes = {
+  teamName: PropTypes.string,
+  score: PropTypes.string,
+  updateTeamName: PropTypes.func,
+  changeScore: PropTypes.func,
+};
+
+Team.defaultProps = {
+  teamName: "Default teamName in <Team />",
+  score: "Default score in <Team />",
+  updateTeamName: console.log("Clicked updateTeamName(), <Team />"),
+  changeScore: console.log("Clicked updateTeamName(), <Team />"),
+};
+
+const TeamsList = (props) => {
+  const { teams, teamCount, updateTeamName } = props;
   let teamsInPlay = [];
   for (let i = 0; i < teamCount; i++) {
     teamsInPlay.push(
-      <div key={i} className="aTeam">
-        <TeamName
-          name={teams[i].name}
-          updateTeamName={updateTeamName}
-          nameIndex={i}
-          {...props}
-        />
-        <TeamScore
-          handleClick={changeScore}
-          team={teams[i].name}
-          score={teams[i].score}
-        />
-      </div>
+      <Team
+        key={i}
+        teamName={teams[i].name}
+        score={teams[i].score}
+        updateTeamName={updateTeamName}
+        nameIndex={i}
+        {...props}
+      />
     );
   }
   return <div className="teamlist">{teamsInPlay}</div>;
 };
 
+TeamsList.propTypes = {
+  teams: PropTypes.array,
+  teamCount: PropTypes.number,
+  updateTeamName: PropTypes.func,
+};
+
+TeamsList.defaultProps = {
+  teams: [],
+  teamCount: 4,
+  updateTeamName: console.log("Clicked, <TeamsList />"),
+};
+
 const AddRemoveTeam = (props) => {
+  const { teamIncDec } = props;
   return (
     <div className="add-remove-teams">
-      <span>Teams</span>
-      <div className="incdec" onClick={() => props.teamIncDec("minus")}>
+      <button className="incdec" onClick={() => teamIncDec("minus")}>
         -
-      </div>
-      <div className="incdec" onClick={() => props.teamIncDec("plus")}>
+      </button>
+      <span>Teams</span>
+      <button className="incdec" onClick={() => teamIncDec("plus")}>
         +
-      </div>
+      </button>
     </div>
   );
+};
+
+AddRemoveTeam.propTypes = {
+  teamIncDec: PropTypes.func,
+};
+
+AddRemoveTeam.defaultProps = {
+  teamIncDec: console.log("Clicked, <AddRemoveTeams />"),
 };
 
 const DecksBtn = (props) => {
   const { changeScreen, currentScreen } = props;
   if (currentScreen === "decks") {
     return (
-      <div className="screen-change-btn" onClick={() => changeScreen("/")}>
-        <NavLink style={{ textDecoration: "none", color: "black" }} to="/">
-          {" "}
-          Game{" "}
-        </NavLink>
-      </div>
+      <button className="screen-change-btn" onClick={() => changeScreen("/")}>
+        <NavLink to="/">Game</NavLink>
+      </button>
     );
   } else {
     return (
@@ -87,6 +126,16 @@ const DecksBtn = (props) => {
       </div>
     );
   }
+};
+
+DecksBtn.propTypes = {
+  changeScreen: PropTypes.func,
+  currentScreen: PropTypes.func,
+};
+
+DecksBtn.defaultProps = {
+  changeScreen: console.log("Clicked <DecksBtn />"),
+  currentScreen: console.log("Clicked <DecksBtn />"),
 };
 
 const SettingsBtn = (props) => {
@@ -113,18 +162,36 @@ const SettingsBtn = (props) => {
   }
 };
 
+SettingsBtn.propTypes = {
+  changeScreen: PropTypes.func,
+  currentScreen: PropTypes.func,
+};
+
+SettingsBtn.defaultProps = {
+  changeScreen: console.log("Clicked <DecksBtn />"),
+  currentScreen: console.log("Clicked <DecksBtn />"),
+};
+
 const ControlPanel = (props) => {
   const { updateTeamName } = props;
   return (
     <div className="controlpanel">
-      <TeamList {...props} updateTeamName={updateTeamName} />
+      {/* <TeamsList {...props} updateTeamName={updateTeamName} /> */}
       <div className="controls">
-        <AddRemoveTeam {...props} />
+        {/* <AddRemoveTeam {...props} /> */}
         <DecksBtn {...props} />
         <SettingsBtn {...props} />
       </div>
     </div>
   );
+};
+
+ControlPanel.propTypes = {
+  updateTeamName: PropTypes.func,
+};
+
+ControlPanel.defaultProps = {
+  updateTeamName: console.log("Clicked <ControlPanel />"),
 };
 
 export default ControlPanel;

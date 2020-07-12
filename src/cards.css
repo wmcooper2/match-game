@@ -1,0 +1,17 @@
+img {
+  display: block;
+  margin: auto auto;
+  height: 12vw;
+  width: 12vw;
+  outline: 1px solid black;
+  cursor: pointer;
+}
+
+div.react-card-flip {
+  height: 100%;
+}
+
+div.react-card-front,
+div.react-card-back {
+  display: grid;
+}

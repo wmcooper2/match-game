@@ -17,21 +17,21 @@
   --boardW: 90vw;
   --smallBoardW: 85vw;
   --smallMarginW: 2vw;
-  --font-size: 5vw;
-  --font-family: "Comic Sans MS", "Comic Sans", "Rubik", "Tahoma",
-    "Times New Roman", "Arial";
-  background-color: var(--lightBlue);
+  /* --font-size: 5vw; */
+  /* --font-family: "Comic Sans MS", "Comic Sans", "Rubik", "Tahoma", */
+    /* "Times New Roman", "Arial"; */
+  /* background-color: var(--lightBlue); */
+  --background-color: white;
+  font-size: 1rem;
+  --Font: "Comic Sans MS", "Comic Sans", "Rubik", "Tahoma", "Times New Roman",
+    "Arial";
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  background-color: var(--lightBlue);
-  /* height: 100vh; */
-  justify-content: space-between;
-  /* width: 100%; */
-  overflow-y: hidden;
-  overflow-x: hidden;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .options {
