@@ -15,68 +15,11 @@ button:hover {
   box-shadow: inset 0px 0px 2px 2px black;
 }
 
-.add-remove-teams {
-  display: flex;
-  background-color: var(--background-color);
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 2vw;
-}
-
-.control-panel2 {
+.control-panel {
   display: flex;
   flex-direction: row;
   justify-items: center;
-}
-
-.add-remove-teams span {
-  margin: 0px 20px;
-}
-
-.controlpanel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--background-color);
-  margin-bottom: 1vh;
-  font-size: 2rem;
-}
-
-.controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--lightBlue);
-  font-size: var(--font-size);
-}
-
-.incdec {
-  font-size: var(--font-size);
-  /* padding: 0; */
-}
-
-.indec:hover {
-  cursor: pointer;
-}
-
-input {
-  width: var(--teamNameW);
-  color: var(--fontColor);
-  border-radius: var(--softBorder);
-  border: none;
-  padding: 6px;
-  text-align: center;
-  max-width: 15vw;
-  font-size: 1rem;
-  font-family: var(--font-family);
-}
-
-.instructions {
-  color: black;
-  font-weight: bold;
-  text-align: center;
+  border: 1px solid black;
 }
 
 .screen-change-btn {
@@ -88,26 +31,4 @@ input {
 
 .screen-change-btn:hover {
   outline: none;
-}
-
-.score {
-  font-size: var(--font-size);
-}
-
-.scoreControl {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.teamlist {
-  display: flex;
-  justify-content: space-between;
-}
-
-.team {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
 }

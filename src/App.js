@@ -1,16 +1,15 @@
 import React from "react";
 import BoardGame2 from "./components/boardgame2";
-import ControlPanel from "./components/controlpanel";
-import SettingsBtn from "./components/settingsBtn";
-import DecksBtn from "./components/decksBtn";
-import { Teams } from "./teams";
+import CardAmountBtn from "./components/cardAmountBtn";
+import VocabBtn from "./components/vocabBtn";
 import { boardShapes, defaultShape } from "./boardshapes";
 import { BoardShapeScreen, VocabScreen } from "./components/optionScreens";
-import { misc, fruits, animals, colors } from "./decks";
+import { misc, fruits, animals, colors } from "./vocab";
 import { HashRouter, Route } from "react-router-dom";
 import "./css/App.css";
 import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -20,8 +19,6 @@ class App extends React.Component {
       deck: misc,
       deckName: "misc",
       currentScreen: "game",
-      teamCount: 4,
-      teams: Teams,
     };
 
     this.deckChoices = [
@@ -34,12 +31,10 @@ class App extends React.Component {
     this.cardClick = this.cardClick.bind(this);
     this.changeBoardShape = this.changeBoardShape.bind(this);
     this.changeVocab = this.changeVocab.bind(this);
-    this.changeScore = this.changeScore.bind(this);
-    this.teamIncDec = this.teamIncDec.bind(this);
     this.changeScreen = this.changeScreen.bind(this);
     this.updateBoard = this.updateBoard.bind(this);
-    this.updateTeamName = this.updateTeamName.bind(this);
   }
+
 
   cardClick = (props) => {
     let deck = this.state.deck.slice();
@@ -48,6 +43,7 @@ class App extends React.Component {
       deck: deck,
     });
   };
+
 
   updateBoard = (props) => {
     let deckName = this.state.deckName;
@@ -91,12 +87,14 @@ class App extends React.Component {
     });
   };
 
+
   changeBoardShape = (props) => {
     let newShape = boardShapes.filter((item) => item.size === props);
     this.setState(() => {
       return { boardShape: newShape[0] };
     });
   };
+
 
   changeVocab = (props) => {
     let newDeck = this.deckChoices.filter((choice) => choice.name === props);
@@ -105,46 +103,6 @@ class App extends React.Component {
     });
   };
 
-  changeScore = (props, team) => {
-    let teamsCopy = this.state.teams;
-    teamsCopy.forEach((item) => {
-      if (item.name === team) {
-        props === "plus" ? item.score++ : item.score--;
-      }
-    });
-    this.setState({
-      teams: teamsCopy,
-    });
-  };
-
-  teamIncDec = (props) => {
-    let newCount;
-    if (props === "plus") {
-      if (this.state.teamCount >= 4) {
-        newCount = 4;
-      } else if (this.state.teamCount < 2) {
-        newCount = 2;
-      } else {
-        newCount = this.state.teamCount + 1;
-      }
-    } else {
-      if (this.state.teamCount <= 2) {
-        newCount = 0;
-      } else {
-        newCount = this.state.teamCount - 1;
-      }
-    }
-    this.setState((state) => {
-      return { teamCount: newCount };
-    });
-  };
-
-  updateTeamName = (props) => {
-    // console.log("updateTeamName: ", team, name);
-    // console.log("update team name: ", props);
-    // let teams = this.state.Teams;
-    // teams.indexOf(props);
-  };
 
   changeScreen = (props) => {
     if (props === "/") {
@@ -160,12 +118,12 @@ class App extends React.Component {
     return (
       <HashRouter>
         <div className="main">
-          <div className="control-panel2">
-            <DecksBtn
+          <div className="control-panel">
+            <VocabBtn
               currentScreen={this.state.currentScreen}
               changeScreen={this.changeScreen}
             />
-            <SettingsBtn
+            <CardAmountBtn
               currentScreen={this.state.currentScreen}
               changeScreen={this.changeScreen}
             />
@@ -182,7 +140,7 @@ class App extends React.Component {
             )}
           />
           <Route
-            path="/cards"
+            path="/card-amount"
             render={(props) => (
               <BoardShapeScreen
                 choices={boardShapes}
@@ -201,42 +159,32 @@ class App extends React.Component {
             )}
           />
         </div>
-        <ControlPanel
-          changeScore={this.changeScore}
-          changeScreen={this.changeScreen}
-          teamIncDec={this.teamIncDec}
-          updateTeamName={this.updateTeamName}
-          {...this.state}
-        />
       </HashRouter>
     );
   }
 }
+
 
 App.propTypes = {
   boardShape: PropTypes.object,
   deck: PropTypes.array,
   deckName: PropTypes.string,
   currentScreen: PropTypes.string,
-  teamCount: PropTypes.number,
-  teams: PropTypes.array,
 };
 
-// const defaultShape =
+
 App.defaultProps = {
   boardShape: { size: 8, x: 4, y: 2 },
   deck: [
     {
       name: "youtube",
-      image:
-        "https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/youtube.jpg",
+      image: process.env.PUBLIC_URL + "/youtube.jpg",
       flipped: false,
     },
   ],
   deckName: "Default deckName",
   currentScreen: "Default screen",
-  teamCount: 1,
-  teams: [{ name: "Team A", score: 0 }],
 };
+
 
 export default App;

@@ -1,10 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
-const SettingsBtn = (props) => {
+const VocabBtn = (props) => {
   const { changeScreen, currentScreen } = props;
-  if (currentScreen === "settings") {
+  if (currentScreen === "decks") {
     return (
       <button className="screen-change-btn" onClick={() => changeScreen("/")}>
         <NavLink
@@ -25,10 +24,10 @@ const SettingsBtn = (props) => {
     return (
       <button
         className="screen-change-btn"
-        onClick={() => changeScreen("settings")}
+        onClick={() => changeScreen("decks")}
       >
         <NavLink
-          to="settings"
+          to="/vocab"
           style={{
             color: "black",
             textDecoration: "none",
@@ -37,21 +36,11 @@ const SettingsBtn = (props) => {
             margin: "1rem 1rem",
           }}
         >
-          Cards
+          Vocabulary
         </NavLink>
       </button>
     );
   }
 };
 
-SettingsBtn.propTypes = {
-  changeScreen: PropTypes.func,
-  currentScreen: PropTypes.string,
-};
-
-SettingsBtn.defaultTypes = {
-  changeScreen: console.log("Clicked <SettingsBtn />"),
-  currentScreen: "Default Screen",
-};
-
-export default SettingsBtn;
+export default VocabBtn;

@@ -1,6 +1,7 @@
 import React from "react";
 
 const BoardShapeScreen = (props) => {
+  console.log("BoardShapeScreen:", props);
   const { changeBoardShape, choices } = props;
   let options = [];
   choices.forEach((choice) => {
@@ -14,7 +15,6 @@ const BoardShapeScreen = (props) => {
       </button>
     );
   });
-
   return <div className="options"> {options.reverse()} </div>;
 };
 

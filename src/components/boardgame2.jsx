@@ -5,7 +5,7 @@ const FlipCardFront = (props) => {
   const { cardID, handleClick } = props;
   return (
     <img
-      src="https://s3-ap-northeast-1.amazonaws.com/wmcooper2.com/tefl-assistant/match-game/front.jpg"
+      src={process.env.PUBLIC_URL + "/front.jpg"}
       alt="front"
       onClick={() => handleClick(cardID)}
     ></img>
@@ -15,7 +15,7 @@ const FlipCardFront = (props) => {
 const FlipCardBack = (props) => {
   const { card, cardID, handleClick } = props;
   return (
-    <img src={card.image} alt="card" onClick={() => handleClick(cardID)}></img>
+    <img src={card.image} alt={card.image} onClick={() => handleClick(cardID)}></img>
   );
 };
 
@@ -63,7 +63,6 @@ const Card = (props) => {
 
 const BoardGame = (props) => {
   const { boardShape, deck } = props;
-  // console.log("BoardGame: ", boardShape);
   let cards = [];
   console.log("BoardGame: ", boardShape.size);
   for (let i = 0; i < boardShape.size; i++) {
